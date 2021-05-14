@@ -39,5 +39,24 @@ namespace Ex03.GarageLogic
         }
 
 
+        public void InflateWheel(float i_AirPressureToAdd)
+        {
+            bool isAirPressureToAddIsNegative = i_AirPressureToAdd < 0;
+            bool isAboveMaxAirPressure = m_AirPressure + i_AirPressureToAdd > r_MaxAirPressure;
+
+            if (isAirPressureToAddIsNegative == true)
+            {
+                throw new ArgumentException("Cannot lower the air pressure!");
+            }
+            else if (isAboveMaxAirPressure == true)
+            {
+                throw new ArgumentException("Cannot add more air then the maximum airpressure of the wheel!");
+            }
+            else
+            {
+                m_AirPressure += i_AirPressureToAdd;
+            }
+        }
+
     }
 }

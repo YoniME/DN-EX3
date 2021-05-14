@@ -8,13 +8,26 @@ namespace Ex03.GarageLogic
 {
     public abstract class Vehicle
     {
-		private readonly int r_NumOfWheels = 0;
-
 		private string m_ManufacturName;
 		private string m_PlateLicenseNumber;
 		private float m_RemainingEnergy;
 		private List<Wheel> m_Wheels;
-		//private EnergySource m_EnergySource;
+		
+		public enum eVehicleType
+        {
+			Car,
+			MotorCycle,
+			Truck
+        }
+
+
+		protected Vehicle(string i_Manufacturer, string i_PlateLicenseNumber, float i_RemainingEnergy,int i_NumberOfWheels)
+        {
+			m_ManufacturName = i_Manufacturer;
+			m_PlateLicenseNumber = i_PlateLicenseNumber;
+			m_RemainingEnergy = i_RemainingEnergy;
+			m_Wheels = null;
+		}
 
 		public string ManufacturName
         {
