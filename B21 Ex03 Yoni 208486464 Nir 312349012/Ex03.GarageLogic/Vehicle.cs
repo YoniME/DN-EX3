@@ -53,7 +53,17 @@ namespace Ex03.GarageLogic
 			set { m_Wheels = value; }
 		}
 
+		public virtual string GetDetails()
+        {
+			StringBuilder vehicleDetails = new StringBuilder();
 
+			vehicleDetails.AppendFormat(@"
+							Plate License Number: {0}
+							Manufactur Name: {1}
+							", m_PlateLicenseNumber, m_ManufacturName);
+
+			return vehicleDetails.ToString();
+        }
 
 
 	}
