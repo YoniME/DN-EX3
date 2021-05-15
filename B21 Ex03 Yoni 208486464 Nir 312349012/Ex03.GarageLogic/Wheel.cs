@@ -44,18 +44,17 @@ namespace Ex03.GarageLogic
             bool isAirPressureToAddIsNegative = i_AirPressureToAdd < 0;
             bool isAboveMaxAirPressure = m_AirPressure + i_AirPressureToAdd > r_MaxAirPressure;
 
-            if (isAirPressureToAddIsNegative == true)
+            if (isAirPressureToAddIsNegative)
             {
                 throw new ArgumentException("Cannot lower the air pressure!");
             }
-            else if (isAboveMaxAirPressure == true)
+            else if (isAboveMaxAirPressure)
             {
                 throw new ArgumentException("Cannot add more air then the maximum airpressure of the wheel!");
             }
-            else
-            {
-                m_AirPressure += i_AirPressureToAdd;
-            }
+            
+            m_AirPressure += i_AirPressureToAdd;
+            
         }
 
     }

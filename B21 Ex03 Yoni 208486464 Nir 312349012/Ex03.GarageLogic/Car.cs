@@ -12,6 +12,7 @@ namespace Ex03.GarageLogic
         private const int k_NumberOfWheels = 4;
         private const float k_MaxAirPressure = 32;
         private const float k_MaxFuelTankCapacity = 45;
+        private const float k_MaxBatteryChargeInHours = 3.2f;
         private const FuelTank.eFuelType k_TypeOfFuel = FuelTank.eFuelType.Octan95;
 
         /*Fields*/
