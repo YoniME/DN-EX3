@@ -10,26 +10,17 @@ namespace Ex03.GarageLogic
     {
         private float m_RemainingEnergy;
         private readonly float m_MaxEnergySourceCapacity;
-        private eTypeOfEnergySource m_TypeOfEnergy;
-
-        public enum eTypeOfEnergySource
-        {
-            Fuel,
-            ElectricBattery
-        }
 
         public EnergySource()
         {
             m_RemainingEnergy = 0;
             m_MaxEnergySourceCapacity = 0;
-            m_TypeOfEnergy = new eTypeOfEnergySource();
         }
 
-        public EnergySource(float i_RemainingEnergy, float i_MaxEnergySourceCapacity, eTypeOfEnergySource i_TypeOfEnergy)
+        public EnergySource(float i_RemainingEnergy, float i_MaxEnergySourceCapacity)
         {
             m_RemainingEnergy = i_RemainingEnergy;
             m_MaxEnergySourceCapacity = i_MaxEnergySourceCapacity;
-            m_TypeOfEnergy = i_TypeOfEnergy;
         }
 
         public float RemainingEnergy
@@ -43,21 +34,9 @@ namespace Ex03.GarageLogic
             get { return m_MaxEnergySourceCapacity; }
         }
 
-        public eTypeOfEnergySource TypeOfEnergySource
-        {
-            get { return m_TypeOfEnergy; }
-            set { m_TypeOfEnergy = value; }
-        }
 
-        public virtual string GetEnergySourceDetails()
-        {
-            StringBuilder energySourceDetails = new StringBuilder();
+        public abstract string GetEnergySourceDetails();
 
-            energySourceDetails.AppendFormat(@"
-                                Type of energy source: {0}", m_TypeOfEnergy.ToString());
-
-            return energySourceDetails.ToString();
-        }
 
         protected void isValidAmountOfEnergy(float i_AmountOfFuel)
         {

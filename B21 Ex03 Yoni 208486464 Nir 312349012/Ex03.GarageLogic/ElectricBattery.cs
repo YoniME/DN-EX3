@@ -15,10 +15,10 @@ namespace Ex03.GarageLogic
             StringBuilder electricBatteryDetails = new StringBuilder();
 
             electricBatteryDetails.AppendFormat(@"
-                            {0},
+                            Type of energy source: Electric battery
                             Max hours in one battery charge: {1}
                             Current remaining hours in battery: {2}",
-                            base.GetEnergySourceDetails(), MaxEnergySourceCapacity, RemainingEnergy);
+                            MaxEnergySourceCapacity, RemainingEnergy);
 
             return electricBatteryDetails.ToString();
         }

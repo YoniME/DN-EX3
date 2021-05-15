@@ -43,10 +43,12 @@ namespace Ex03.GarageLogic
             StringBuilder truckDetails = new StringBuilder();
 
             truckDetails.AppendFormat(@"
-                        {0}
-                        Is carrying hazardous materials: {1}
-                        Max carrying weight: {2}"
-                        , base.GetDetails(), m_IsCarryingHazardousMaterials.ToString(), r_MaxCarryingWeight.ToString());
+                        Is carrying hazardous materials: {0}
+                        Max carrying weight: {1}
+                        {3}"
+                        ,m_IsCarryingHazardousMaterials.ToString(),
+                        r_MaxCarryingWeight.ToString(),
+                        m_FuelTank.GetEnergySourceDetails().ToString());
 
             return truckDetails.ToString();
         }

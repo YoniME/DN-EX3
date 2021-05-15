@@ -24,8 +24,8 @@ namespace Ex03.GarageLogic
             m_FuelType = new eFuelType();
         }
 
-        public FuelTank(float i_RemainingEnergy, float i_MaxEnergySourceCapacity,eTypeOfEnergySource i_TypeOfEnergy, eFuelType i_FuelType)
-            : base(i_RemainingEnergy, i_MaxEnergySourceCapacity, i_TypeOfEnergy)
+        public FuelTank(float i_RemainingEnergy, float i_MaxEnergySourceCapacity, eFuelType i_FuelType)
+            : base(i_RemainingEnergy, i_MaxEnergySourceCapacity)
         {
             m_FuelType = i_FuelType;
         }
@@ -70,14 +70,13 @@ namespace Ex03.GarageLogic
             StringBuilder fuelTankDetails = new StringBuilder();
 
             fuelTankDetails.AppendFormat(@"
-                            {0},
+                            Type of energy source: Fuel
                             Max amount of fuel in tank: {1}
                             Current amount of fuel in tank: {2}
                             Type of fuel: {3}",
-                            base.GetEnergySourceDetails(), MaxEnergySourceCapacity, RemainingEnergy, m_FuelType.ToString());
+                            MaxEnergySourceCapacity, RemainingEnergy, m_FuelType.ToString());
 
             return fuelTankDetails.ToString();
         }
-
     }
 }
