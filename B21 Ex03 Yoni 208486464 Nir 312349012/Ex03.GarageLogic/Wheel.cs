@@ -13,7 +13,7 @@ namespace Ex03.GarageLogic
         private readonly float r_MaxAirPressure;
 
 
-        protected Wheel(string i_ManufacturName, float i_AirPressure, float i_MaxAirPressure)
+        public Wheel(string i_ManufacturName, float i_AirPressure, float i_MaxAirPressure)
         {
             m_ManufacturName = i_ManufacturName;
             m_AirPressure = i_AirPressure;
@@ -44,18 +44,17 @@ namespace Ex03.GarageLogic
             bool isAirPressureToAddIsNegative = i_AirPressureToAdd < 0;
             bool isAboveMaxAirPressure = m_AirPressure + i_AirPressureToAdd > r_MaxAirPressure;
 
-            if (isAirPressureToAddIsNegative == true)
+            if (isAirPressureToAddIsNegative)
             {
                 throw new ArgumentException("Cannot lower the air pressure!");
             }
-            else if (isAboveMaxAirPressure == true)
+            else if (isAboveMaxAirPressure)
             {
                 throw new ArgumentException("Cannot add more air then the maximum airpressure of the wheel!");
             }
-            else
-            {
-                m_AirPressure += i_AirPressureToAdd;
-            }
+            
+            m_AirPressure += i_AirPressureToAdd;
+            
         }
 
     }

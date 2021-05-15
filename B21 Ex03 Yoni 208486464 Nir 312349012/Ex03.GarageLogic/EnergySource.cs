@@ -9,7 +9,13 @@ namespace Ex03.GarageLogic
     public abstract class EnergySource
     {
         private float m_RemainingEnergy;
-        private readonly float m_MaxEnergySourceCapacity;
+        private float m_MaxEnergySourceCapacity;
+
+        public enum eEnergySourceType
+        {
+            Fuel,
+            Electricbattery
+        }
 
         public EnergySource()
         {
@@ -32,6 +38,7 @@ namespace Ex03.GarageLogic
         public float MaxEnergySourceCapacity
         {
             get { return m_MaxEnergySourceCapacity; }
+            set { m_MaxEnergySourceCapacity = value; }
         }
 
 
