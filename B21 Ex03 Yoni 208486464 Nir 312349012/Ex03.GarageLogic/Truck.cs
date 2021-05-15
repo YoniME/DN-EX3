@@ -17,7 +17,7 @@ namespace Ex03.GarageLogic
         /*Fields*/
         private readonly float r_MaxCarryingWeight;
         private bool m_IsCarryingHazardousMaterials;
-        private FuelTank m_FuelTank;
+        //private FuelTank m_FuelTank;
 
         public Truck(float i_MaxCarryingWeight, bool i_IsCarryingHazardousMaterials, string i_Manufacturer, string i_PlateLicenseNumber, float i_RemainingEnergy, int i_NumberOfWheels)
             : base(i_Manufacturer, i_PlateLicenseNumber, i_RemainingEnergy, i_NumberOfWheels)

@@ -18,7 +18,7 @@ namespace Ex03.GarageLogic
         /*Fields*/
         private int m_EngineDisplacement;
         private eLicenseType m_LicenseType;
-        private EnergySource m_EnergySource;
+        
 
         public enum eLicenseType
         {

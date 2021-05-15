@@ -12,7 +12,8 @@ namespace Ex03.GarageLogic
 		private string m_PlateLicenseNumber;
 		private float m_RemainingEnergy;
 		private List<Wheel> m_Wheels;
-		
+		private EnergySource m_EnergySource;
+
 		public enum eVehicleType
         {
 			Car,
