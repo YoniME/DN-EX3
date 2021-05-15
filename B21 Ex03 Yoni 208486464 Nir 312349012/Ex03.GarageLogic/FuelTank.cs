@@ -9,7 +9,7 @@ namespace Ex03.GarageLogic
     public class FuelTank : EnergySource
     {
 
-        private readonly eFuelType m_FuelType;
+        private eFuelType m_FuelType;
 
         public enum eFuelType
         {
@@ -33,6 +33,7 @@ namespace Ex03.GarageLogic
         public eFuelType FuelType
         {
             get { return m_FuelType; }
+            set { m_FuelType = value; }
         }
 
         public void Refuel(float i_AmountOfFuelToAdd, eFuelType i_FuelType)
@@ -69,12 +70,10 @@ namespace Ex03.GarageLogic
         {
             StringBuilder fuelTankDetails = new StringBuilder();
 
-            fuelTankDetails.AppendFormat(@"
-                            Type of energy source: Fuel
-                            Max amount of fuel in tank: {1}
-                            Current amount of fuel in tank: {2}
-                            Type of fuel: {3}",
-                            MaxEnergySourceCapacity, RemainingEnergy, m_FuelType.ToString());
+            fuelTankDetails.AppendFormat("Type of energy source: Fuel{0}", Environment.NewLine);
+            fuelTankDetails.AppendFormat("Max amount of fuel in tank: {0}{1}", MaxEnergySourceCapacity, Environment.NewLine);
+            fuelTankDetails.AppendFormat("Current amount of fuel in tank: {0}{1}", RemainingEnergy, Environment.NewLine);
+            fuelTankDetails.AppendFormat("Type of fuel: {0}{1}",m_FuelType.ToString(),Environment.NewLine);
 
             return fuelTankDetails.ToString();
         }

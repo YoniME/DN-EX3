@@ -28,13 +28,46 @@ namespace Ex03.GarageLogic
             BB
         }
 
-        public Motorcycle(int i_EngineDisplacement, eLicenseType i_LicenseType,
-            string i_Manufacturer, string i_PlateLicenseNumber, float i_RemainingEnergy) : 
-            base(i_Manufacturer, i_PlateLicenseNumber, i_RemainingEnergy, k_NumberOfWheels)
+        public Motorcycle(string i_Manufacturer, string i_PlateLicenseNumber, float i_RemainingEnergy,
+            EnergySource.eEnergySourceType i_EnergyType, string i_WheelsManufacturName, float i_CurrentWheelsAirPressure) : 
+            base(i_Manufacturer, i_PlateLicenseNumber, i_RemainingEnergy, k_NumberOfWheels,
+                k_MaxAirPressure, i_EnergyType, i_WheelsManufacturName, i_CurrentWheelsAirPressure)
         {
-            m_EngineDisplacement = i_EngineDisplacement;
-            m_LicenseType = i_LicenseType;
-            // to see how to create the type of energy source
+            m_EngineDisplacement = 0;
+            m_LicenseType = new eLicenseType();
         }
+
+
+        public override string GetDetails()
+        {
+            StringBuilder motorcycleDetails = new StringBuilder();
+
+            motorcycleDetails.AppendFormat("{0}", base.GetDetails());
+            motorcycleDetails.AppendFormat("License type: {0}{1}", m_LicenseType.ToString(), Environment.NewLine);
+            motorcycleDetails.AppendFormat("Engine displacement: {0}{1}",m_EngineDisplacement.ToString(), Environment.NewLine);
+            motorcycleDetails.AppendFormat("{0}", EnergySource.GetEnergySourceDetails());
+
+            return motorcycleDetails.ToString();
+        }
+
+        public override void setEnergySource(float i_RemainingEnergy)
+        {
+            float maxCapacity;
+
+            if (EnergySource is FuelTank)
+            {
+                maxCapacity = k_MaxFuelTankCapacity;
+                (EnergySource as FuelTank).FuelType = k_FuelType;
+            }
+            else
+            {
+                maxCapacity = k_MaxBatteryChargeInHours;
+            }
+
+            EnergySource.MaxEnergySourceCapacity = maxCapacity;
+            EnergySource.RemainingEnergy = i_RemainingEnergy;
+        }
+
+
     }
 }

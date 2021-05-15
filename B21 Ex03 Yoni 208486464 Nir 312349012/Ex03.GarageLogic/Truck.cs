@@ -15,21 +15,22 @@ namespace Ex03.GarageLogic
         private const FuelTank.eFuelType k_FuelType = FuelTank.eFuelType.Soler;
 
         /*Fields*/
-        private readonly float r_MaxCarryingWeight;
+        private float m_MaxCarryingWeight;
         private bool m_IsCarryingHazardousMaterials;
-        //private FuelTank m_FuelTank;
 
-        public Truck(float i_MaxCarryingWeight, bool i_IsCarryingHazardousMaterials, string i_Manufacturer, string i_PlateLicenseNumber, float i_RemainingEnergy, int i_NumberOfWheels)
-            : base(i_Manufacturer, i_PlateLicenseNumber, i_RemainingEnergy, i_NumberOfWheels)
+        public Truck(string i_Manufacturer, string i_PlateLicenseNumber, float i_RemainingEnergy,
+            EnergySource.eEnergySourceType i_EnergyType, string i_WheelsManufacturName, float i_CurrentWheelsAirPressure) :
+            base(i_Manufacturer, i_PlateLicenseNumber, i_RemainingEnergy, k_NumberOfWheels,
+                k_MaxAirPressure, i_EnergyType, i_WheelsManufacturName, i_CurrentWheelsAirPressure)
         {
-            r_MaxCarryingWeight = i_MaxCarryingWeight;
-            m_IsCarryingHazardousMaterials = i_IsCarryingHazardousMaterials;
-            m_FuelTank = new FuelTank(i_RemainingEnergy, k_MaxFuelTankCapacity, k_FuelType);
+            m_MaxCarryingWeight = 0;
+            m_IsCarryingHazardousMaterials = false;
         }
 
         public float MaxCarryingWeight
         {
-            get { return r_MaxCarryingWeight; }
+            get { return m_MaxCarryingWeight; }
+            set { m_MaxCarryingWeight = value; }
         }
 
         public bool IsCarryingHazardousMaterials
@@ -42,15 +43,19 @@ namespace Ex03.GarageLogic
         {
             StringBuilder truckDetails = new StringBuilder();
 
-            truckDetails.AppendFormat(@"
-                        Is carrying hazardous materials: {0}
-                        Max carrying weight: {1}
-                        {3}"
-                        ,m_IsCarryingHazardousMaterials.ToString(),
-                        r_MaxCarryingWeight.ToString(),
-                        m_FuelTank.GetEnergySourceDetails().ToString());
+            truckDetails.AppendFormat("{0}", base.GetDetails());
+            truckDetails.AppendFormat("Is carrying hazardous materials: {0}{1}", m_IsCarryingHazardousMaterials.ToString(), Environment.NewLine);
+            truckDetails.AppendFormat("Max carrying weight: {0}{1}", m_MaxCarryingWeight.ToString(), Environment.NewLine);
+            truckDetails.AppendFormat("{0}", EnergySource.GetEnergySourceDetails());
 
             return truckDetails.ToString();
+        }
+
+        public override void setEnergySource(float i_RemainingEnergy)
+        {
+            (EnergySource as FuelTank).FuelType = k_FuelType;
+            EnergySource.MaxEnergySourceCapacity = k_MaxFuelTankCapacity;
+            EnergySource.RemainingEnergy = i_RemainingEnergy;
         }
     }
 }
