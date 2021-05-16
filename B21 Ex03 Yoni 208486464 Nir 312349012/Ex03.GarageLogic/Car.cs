@@ -62,11 +62,10 @@ namespace Ex03.GarageLogic
         {
             StringBuilder carDetails = new StringBuilder();
 
-            carDetails.AppendFormat(@"
-                        {0}
-                        Color: {1}
-                        Number of doors: {2}"
-                        , base.GetDetails(), m_CarColor.ToString(), m_NumberOfDoors.ToString());
+            carDetails.AppendFormat("{0}", base.GetDetails());
+            carDetails.AppendFormat("Color: {0}{1}", m_CarColor.ToString(), Environment.NewLine);
+            carDetails.AppendFormat("Number of doors: {0}{1}", m_NumberOfDoors.ToString(), Environment.NewLine);
+            carDetails.AppendFormat("{0}", EnergySource.GetEnergySourceDetails());
 
             return carDetails.ToString();
         }

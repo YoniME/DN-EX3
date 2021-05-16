@@ -21,7 +21,6 @@ namespace Ex03.GarageLogic
 			Truck
         }
 
-
 		protected Vehicle(string i_Manufacturer, string i_PlateLicenseNumber,float i_RemainingEnergy,
 			int i_NumberOfWheels, float i_MaxAirPressure, EnergySource.eEnergySourceType i_EnergyType,
 			string i_WheelsManufacturName, float i_CurrentWheelsAirPressure)
@@ -29,7 +28,7 @@ namespace Ex03.GarageLogic
 			m_ManufacturName = i_Manufacturer;
 			m_PlateLicenseNumber = i_PlateLicenseNumber;
 			m_RemainingEnergy = i_RemainingEnergy;
-			m_Wheels = new List<Wheel>();
+			m_Wheels = new List<Wheel>(i_NumberOfWheels);
 			setWheels(i_WheelsManufacturName, i_CurrentWheelsAirPressure, i_MaxAirPressure, i_NumberOfWheels);
 			if (i_EnergyType == EnergySource.eEnergySourceType.Fuel)
             {
@@ -94,8 +93,6 @@ namespace Ex03.GarageLogic
 		}
 
 		public abstract void setEnergySource(float i_RemainingEnergy);
-
-
 
 	}
 }
