@@ -50,7 +50,7 @@ namespace Ex03.GarageLogic
             }
             else if (isAboveMaxAirPressure)
             {
-                throw new ArgumentException("Cannot add more air then the maximum airpressure of the wheel!");
+                throw new ValueOutOfRangeException(0, r_MaxAirPressure);
             }
             
             m_AirPressure += i_AirPressureToAdd;

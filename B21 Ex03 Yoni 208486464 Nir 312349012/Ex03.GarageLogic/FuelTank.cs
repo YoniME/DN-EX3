@@ -52,7 +52,7 @@ namespace Ex03.GarageLogic
 
             if(isEngineFlooded)
             {
-                // throw exception that is out of range
+                throw new ValueOutOfRangeException(0, MaxEnergySourceCapacity);
             }
 
             RemainingEnergy += i_AmountOfFuelToAdd;

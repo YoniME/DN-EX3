@@ -43,5 +43,10 @@ namespace Ex03.GarageLogic
             set { m_VehicleStatus = value; }
         }
 
+        public Vehicle Vehicle
+        {
+            get { return m_Vehicle; }
+        }
+
     }
 }

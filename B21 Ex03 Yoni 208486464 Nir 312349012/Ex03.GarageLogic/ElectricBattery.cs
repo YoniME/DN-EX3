@@ -8,8 +8,6 @@ namespace Ex03.GarageLogic
 {
     public class ElectricBattery : EnergySource
     {
-        private const float k_MaxBatteryChargeInHours = 3.2f;
-
         public override string GetEnergySourceDetails()
         {
             StringBuilder electricBatteryDetails = new StringBuilder();
@@ -19,6 +17,27 @@ namespace Ex03.GarageLogic
             electricBatteryDetails.AppendFormat("Current remaining hours in battery: {0}{1}", RemainingEnergy, Environment.NewLine);
 
             return electricBatteryDetails.ToString();
+        }
+
+        public void Charge(float i_AmountOfEnergyToAdd)
+        {
+            bool isBatteryFlooded = RemainingEnergy + i_AmountOfEnergyToAdd > MaxEnergySourceCapacity;
+
+            try
+            {
+                isValidAmountOfEnergy(i_AmountOfEnergyToAdd);
+            }
+            catch (ArgumentException exception)
+            {
+                throw new ArgumentException(exception.Message);
+            }
+
+            if (isBatteryFlooded)
+            {
+                throw new ValueOutOfRangeException(0, MaxEnergySourceCapacity);
+            }
+
+            RemainingEnergy += i_AmountOfEnergyToAdd;
         }
     }
 }
