@@ -133,7 +133,7 @@ namespace Ex03.ConsoleUI
             return outputFloat;
         }
 
-        private string readStringFromUser(int? i_Length)
+        private string readStringFromUser()
         {
             bool isValidString = false;
             string userInput = String.Empty;
@@ -144,10 +144,6 @@ namespace Ex03.ConsoleUI
                 {
                     userInput = ReadString();
                     isValidString = userInput.Trim().Length > 0;
-                    if (i_Length.HasValue)
-                    {
-                        isValidString &= userInput.Trim().Length == i_Length;
-                    }
                 }
                 catch (FormatException)
                 {

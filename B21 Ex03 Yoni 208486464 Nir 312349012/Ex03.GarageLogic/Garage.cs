@@ -8,14 +8,14 @@ namespace Ex03.GarageLogic
 {
     public class Garage
     {
-        private Dictionary<string, VehicleOwner> m_Vehicles;
+        private Dictionary<string, VehicleFolder> m_Vehicles;
 
         public Garage()
         {
-            m_Vehicles = new Dictionary<string, VehicleOwner>();
+            m_Vehicles = new Dictionary<string, VehicleFolder>();
         }
 
-        public Dictionary<string,VehicleOwner> Vehicles
+        public Dictionary<string,VehicleFolder> Vehicles
         {
             get { return m_Vehicles; }
         }
@@ -27,27 +27,37 @@ namespace Ex03.GarageLogic
             return vehicleInGarage;
         }
 
-        public void InsertVehicleToGarage()
+        public void InsertNewVehicleToGarage()
         {
 
         }
 
-        public void InflateTheWheels(string i_LicenseNumber)
+        private void DisplayAllVehiclesInGarage()
         {
 
         }
 
-        public void RefuelVehicle(string i_LicenseNumber)
+        private void ChangeTheStatusOfCar()
         {
 
         }
 
-        public void ChargeVehicleBattery(string i_LicenseNumber)
+        private void InflateTheWheels(string i_LicenseNumber, float i_AmountToAdd)
         {
 
         }
 
-        public void ChangeStatusOfVehicle(string i_LicenseNumber)
+        private void Refuel(string i_LicenseNumber, float i_AmountToAdd)
+        {
+
+        }
+
+        private void ChargeTheBattery(string i_LicenseNumber, float i_AmountToAdd)
+        {
+
+        }
+
+        private void DisplayFullDetailsOfVehicle()
         {
 
         }

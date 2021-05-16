@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    public class VehicleOwner
+    public class VehicleFolder
     {
         private string m_VehicleOwnerName;
         private string m_PhoneNumber;
         private eVehicleStatus m_VehicleStatus;
+        private Vehicle m_Vehicle;
 
         public enum eVehicleStatus
         {
-            InCare,
+            InHandling,
             Fixed,
             Paid
         }
 
-        public VehicleOwner()
+        public VehicleFolder()
         {
             
         }
