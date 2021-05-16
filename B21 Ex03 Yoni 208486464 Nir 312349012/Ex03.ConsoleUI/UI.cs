@@ -46,13 +46,13 @@ namespace Ex03.ConsoleUI
         {
             string[] menu = Enum.GetNames(typeof(T));
             Array indexes = Enum.GetValues(typeof(T));
-            int index = 0;
+            int index = 1;
             foreach(string str in menu)
             {
-                Console.WriteLine(string.Format("{0}. {1}",str));
+                Console.WriteLine(string.Format("{0}. {1}{2}", index++, str, Environment.NewLine));
             }
-
-
+            // check the input
+            return Console.Read();
         }
 
     }
