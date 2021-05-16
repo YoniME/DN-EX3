@@ -23,17 +23,25 @@ namespace Ex03.ConsoleUI
             Quit
         }
 
-        public void PrintString(string i_StringToPrint)
+        public static void PrintString(string i_StringToPrint)
         {
             Console.WriteLine(i_StringToPrint);
         }
 
-        public string ReadString()
+        public static string ReadString()
         {
             return Console.ReadLine();
         }
 
-        public eGarageActions GetActionFromUser()
+        public static void PrintStringList(List<string> i_StringList)
+        {
+            foreach(string str in i_StringList)
+            {
+                UI.PrintString(str);
+            }
+        }
+
+        public static eGarageActions GetActionFromUser()
         {
             eGarageActions action = new eGarageActions();
             int userChoice = GetInputAccordingToEnum<eGarageActions>(action);
@@ -42,7 +50,7 @@ namespace Ex03.ConsoleUI
 
         }
 
-        public int GetInputAccordingToEnum<T>(T i_Enum)
+        public static int GetInputAccordingToEnum<T>(T i_Enum)
         {
             string[] menu = Enum.GetNames(typeof(T));
             Array indexes = Enum.GetValues(typeof(T));
@@ -52,11 +60,11 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine(string.Format("{0}. {1}{2}", index++, str, Environment.NewLine));
             }
 
-            userChoice = readActionFromUser<T>(i_Enum);
+            userChoice = ReadActionFromUser<T>(i_Enum);
             return userChoice;
         }
 
-        private int readActionFromUser<T>(T i_Enum)
+        public static int ReadActionFromUser<T>(T i_Enum)
         {
             int actionNumber = 0, enumSize = Enum.GetNames(typeof(T)).Length;
             bool isValidAction = false;
@@ -65,12 +73,12 @@ namespace Ex03.ConsoleUI
             {
                 try
                 {
-                    actionNumber = readIntFromUser();
+                    actionNumber = ReadIntFromUser();
                     isValidAction = Enum.IsDefined(typeof(T), actionNumber);
                 }
                 catch (ArgumentException)
                 {
-                    printInvalidInputMessage();
+                    PrintInvalidInputMessage();
                 }
             }
             while (!isValidAction);
@@ -78,12 +86,12 @@ namespace Ex03.ConsoleUI
             return actionNumber;
         }
 
-        private void printInvalidInputMessage()
+        public static void PrintInvalidInputMessage()
         {
            PrintString("Invalid input. Please try again");
         }
 
-        private int readIntFromUser()
+        public static int ReadIntFromUser()
         {
             bool isValidInt = false;
             string userInput;
@@ -100,7 +108,7 @@ namespace Ex03.ConsoleUI
 
                 catch (FormatException)
                 {
-                    printInvalidInputMessage();
+                    PrintInvalidInputMessage();
                 }
             }
             while (!isValidInt);
@@ -108,7 +116,7 @@ namespace Ex03.ConsoleUI
             return outputInt;
         }
 
-        private float readFloatFromUser()
+        public static float ReadFloatFromUser()
         {
             bool isValidFloat = false;
             string userInput;
@@ -125,7 +133,7 @@ namespace Ex03.ConsoleUI
 
                 catch (FormatException)
                 {
-                    printInvalidInputMessage();
+                    PrintInvalidInputMessage();
                 }
             }
             while (!isValidFloat);
@@ -133,7 +141,7 @@ namespace Ex03.ConsoleUI
             return outputFloat;
         }
 
-        private string readStringFromUser()
+        public static string ReadStringFromUser()
         {
             bool isValidString = false;
             string userInput = String.Empty;
@@ -147,7 +155,7 @@ namespace Ex03.ConsoleUI
                 }
                 catch (FormatException)
                 {
-                    printInvalidInputMessage();
+                    PrintInvalidInputMessage();
                 }
             }
             while (!isValidString);

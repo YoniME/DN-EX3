@@ -28,6 +28,11 @@ namespace Ex03.GarageLogic
             return vehicleInGarage;
         }
 
+        public VehicleFolder.eVehicleStatus GetVehicleStatuses()
+        {
+            return new VehicleFolder.eVehicleStatus();
+        }
+
         public void InsertNewVehicleToGarage()
         {
             
