@@ -54,8 +54,104 @@ namespace Ex03.GarageLogic
             }
             
             m_AirPressure += i_AirPressureToAdd;
-            
         }
 
+
+        private float readFloatFromUser(string i_MessageToPrint)
+        {
+            bool isValidFloat = false;
+            string userInput, invalidInput = "Invalid input. please try again";
+            float outputFloat = 0;
+
+            Console.WriteLine(i_MessageToPrint);
+            do
+            {
+                try
+                {
+                    userInput = Console.ReadLine();
+                    outputFloat = float.Parse(userInput);
+                    isValidFloat = true;
+                }
+
+                catch (FormatException)
+                {
+                    Console.WriteLine(invalidInput);
+                }
+            }
+            while (!isValidFloat);
+
+            return outputFloat;
+        }
+
+        private float readIntFromUser(string i_MessageToPrint)
+        {
+            bool isValidFloat = false;
+            string userInput;
+            int outputFloat = 0;
+
+            Console.WriteLine(i_MessageToPrint);
+            do
+            {
+                try
+                {
+                    userInput = Console.ReadLine();
+                    outputFloat = int.Parse(userInput);
+                    isValidFloat = true;
+                }
+
+                catch (FormatException)
+                {
+                    printInvalidInputMessage();
+                }
+            }
+            while (!isValidFloat);
+
+            return outputFloat;
+        }
+
+        private int readActionFromUser<T>(string i_MessageToPrint , T i_Enum)
+        {
+            string userInput;
+            int actionNumber = 0;
+            bool isValidAction = false;
+
+            Console.WriteLine(i_MessageToPrint);
+            do
+            {
+                try
+                {
+                    userInput = Console.ReadLine();
+                    actionNumber = int.Parse(userInput);
+                    isValidAction = Enum.IsDefined(typeof(T), actionNumber);
+                }
+                catch (FormatException)
+                {
+                    printInvalidInputMessage();
+                }
+                catch (ArgumentException)
+                {
+                    printOutOfRangeMessage();
+                }
+            }
+            while (!isValidAction);
+
+            return actionNumber;
+
+        }
+
+        private void printOutOfRangeMessage()
+        {
+            Console.WriteLine("The value that entered is out of range");
+        }
+
+        private void printInvalidInputMessage()
+        {
+            Console.WriteLine("Invalid input. Please try again");
+        }
+
+        private void printMenuOptions<T>(T i_Enum)
+        {
+
+        }
     }
 }
