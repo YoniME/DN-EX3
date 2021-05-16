@@ -23,10 +23,14 @@ namespace Ex03.ConsoleUI
 
             do
             {
-                action = m_UserInterface.
+                action = m_UserInterface.GetActionFromUser();
 
 
-            }while(!userWantsToQuit)
+
+
+
+
+            } while (!userWantsToQuit);
 
 
 
