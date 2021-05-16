@@ -27,9 +27,14 @@ namespace Ex03.GarageLogic
             return vehicleInGarage;
         }
 
+        public VehicleFolder.eVehicleStatus GetVehicleStatuses()
+        {
+            return new VehicleFolder.eVehicleStatus();
+        }
+
         public void InsertNewVehicleToGarage()
         {
-
+            
         }
 
         private void DisplayAllVehiclesInGarage()
@@ -42,17 +47,17 @@ namespace Ex03.GarageLogic
 
         }
 
-        private void InflateTheWheels(string i_LicenseNumber, float i_AmountToAdd)
+        public void InflateTheWheels(string i_LicenseNumber, float i_AmountToAdd)
         {
 
         }
 
-        private void Refuel(string i_LicenseNumber, float i_AmountToAdd)
+        public void Refuel(string i_LicenseNumber, float i_AmountToAdd)
         {
 
         }
 
-        private void ChargeTheBattery(string i_LicenseNumber, float i_AmountToAdd)
+        public void ChargeTheBattery(string i_LicenseNumber, float i_AmountToAdd)
         {
 
         }
