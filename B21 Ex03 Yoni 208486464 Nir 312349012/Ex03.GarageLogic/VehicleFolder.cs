@@ -30,7 +30,7 @@ namespace Ex03.GarageLogic
             m_Vehicle = i_Vehicle;
             m_VehicleOwnerName = i_VehicleOwnerName;
             m_PhoneNumber = i_VehicleownerPhoneNumber;
-            m_VehicleStatus = new eVehicleStatus();
+            m_VehicleStatus = eVehicleStatus.InHandling;
         }
 
         public string Name

@@ -10,7 +10,6 @@ namespace Ex03.GarageLogic
     {
 		private string m_ManufacturName;
 		private string m_PlateLicenseNumber;
-		private float m_RemainingEnergy;
 		private List<Wheel> m_Wheels;
 		private EnergySource m_EnergySource;
 
@@ -22,13 +21,12 @@ namespace Ex03.GarageLogic
         }
 
 		
-		protected Vehicle(string i_Manufacturer, string i_PlateLicenseNumber,float i_RemainingEnergy,
+		protected Vehicle(string i_Manufacturer, string i_PlateLicenseNumber,float i_RemainingEnergyPrecentage,
 			int i_NumberOfWheels, float i_MaxAirPressure, EnergySource.eEnergySourceType i_EnergyType,
 			string i_WheelsManufacturName, float i_CurrentWheelsAirPressure)
         {
 			m_ManufacturName = i_Manufacturer;
 			m_PlateLicenseNumber = i_PlateLicenseNumber;
-			m_RemainingEnergy = i_RemainingEnergy;
 			m_Wheels = new List<Wheel>(i_NumberOfWheels);
 			setWheels(i_WheelsManufacturName, i_CurrentWheelsAirPressure, i_MaxAirPressure, i_NumberOfWheels);
 			if (i_EnergyType == EnergySource.eEnergySourceType.Fuel)
@@ -39,7 +37,7 @@ namespace Ex03.GarageLogic
             {
 				m_EnergySource = new ElectricBattery();
             }
-			setEnergySource(i_RemainingEnergy);
+			setEnergySource(i_RemainingEnergyPrecentage);
 		}
 
 		public string ManufacturName
@@ -56,8 +54,8 @@ namespace Ex03.GarageLogic
 
 		public float RemainingEnergy
         {
-            get { return m_RemainingEnergy; }
-			set { m_RemainingEnergy = value; }
+            get { return m_EnergySource.RemainingEnergy; }
+			set { m_EnergySource.RemainingEnergy = value; }
 		}
 		
 		public List<Wheel> Wheels

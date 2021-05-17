@@ -55,7 +55,7 @@ namespace Ex03.GarageLogic
             return motorcycleDetails.ToString();
         }
 
-        public override void setEnergySource(float i_RemainingEnergy)
+        public override void setEnergySource(float i_RemainingEnergyPrecentage)
         {
             float maxCapacity;
 
@@ -70,7 +70,7 @@ namespace Ex03.GarageLogic
             }
 
             EnergySource.MaxEnergySourceCapacity = maxCapacity;
-            EnergySource.RemainingEnergy = i_RemainingEnergy;
+            EnergySource.RemainingEnergy = maxCapacity * i_RemainingEnergyPrecentage / 100;
         }
 
 

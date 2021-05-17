@@ -58,11 +58,11 @@ namespace Ex03.GarageLogic
             return truckDetails.ToString();
         }
 
-        public override void setEnergySource(float i_RemainingEnergy)
+        public override void setEnergySource(float i_RemainingEnergyPrecentage)
         {
             (EnergySource as FuelTank).FuelType = k_FuelType;
             EnergySource.MaxEnergySourceCapacity = k_MaxFuelTankCapacity;
-            EnergySource.RemainingEnergy = i_RemainingEnergy;
+            EnergySource.RemainingEnergy = k_MaxFuelTankCapacity * i_RemainingEnergyPrecentage / 100;
         }
     }
 }

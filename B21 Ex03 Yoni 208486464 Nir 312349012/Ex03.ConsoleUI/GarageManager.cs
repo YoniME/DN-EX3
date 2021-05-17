@@ -96,12 +96,10 @@ namespace Ex03.ConsoleUI
             }
             else
             {
-
-                Enum statusesInGarage = r_Garage.GetVehicleStatuses();
+                VehicleFolder.eVehicleStatus statusesInGarage = new VehicleFolder.eVehicleStatus();
+                //VehicleFolder.eVehicleStatus statusesInGarage = r_Garage.GetVehicleStatuses();
                 userChoice = UI.GetInputAccordingToEnum(statusesInGarage);
-
                 VehicleFolder.eVehicleStatus statusFilter = (VehicleFolder.eVehicleStatus)userChoice;
-
                 vehiclesToDisplay = r_Garage.DisplayAllVehiclesInGarage(statusFilter);
             }
 
@@ -113,7 +111,7 @@ namespace Ex03.ConsoleUI
             StringBuilder stringToPrint = new StringBuilder();
             int userChoice;
             string carLicensePlate;
-            Enum statusesInGarage = new VehicleFolder.eVehicleStatus();
+            VehicleFolder.eVehicleStatus statusesInGarage = new VehicleFolder.eVehicleStatus();
 
             stringToPrint.Append(@"Please enter the car number");
             UI.PrintString(stringToPrint.ToString());
@@ -321,11 +319,22 @@ namespace Ex03.ConsoleUI
 
         private float getRemainingEnergy()
         {
-            string stringToPrint = "Please enter the remaining amount of energy:";
-            float remainingEnergy;
+            string stringToPrint = "Please enter the precentage amount of remaining energy (0-100 %):";
+            bool isValidPrecent = false, isFirstRun = true; ;
+            float remainingEnergy, precentMinRange = 0, precentMaxRange = 100;
 
-            UI.PrintString(stringToPrint);
-            remainingEnergy = UI.ReadFloatFromUser();
+            do
+            {
+                if (!isFirstRun)
+                {
+                    UI.PrintInvalidInputMessage();
+                }
+                isFirstRun = false;
+                UI.PrintString(stringToPrint);
+                remainingEnergy = UI.ReadFloatFromUser();
+                isValidPrecent = isNumberInRange(remainingEnergy, precentMinRange, precentMaxRange);
+            }
+            while (!isValidPrecent);
 
             return remainingEnergy;
         }
@@ -450,6 +459,10 @@ namespace Ex03.ConsoleUI
             return licenseNumber;
         }
 
+        private bool isNumberInRange(float i_Number, float i_Min, float i_Max)
+        {
+            return i_Number >= i_Min && i_Number <= i_Max;
+        }
         
     }
 }
