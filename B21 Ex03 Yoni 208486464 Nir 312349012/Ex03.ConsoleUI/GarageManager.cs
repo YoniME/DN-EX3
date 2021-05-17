@@ -8,25 +8,26 @@ using Ex03.GarageLogic;
 
 namespace Ex03.ConsoleUI
 {
-    class GarageManager
+    public class GarageManager
     {
         private readonly Garage r_Garage;
-        //private UI m_UserInterface;
 
         public GarageManager()
         {
             r_Garage = new Garage();
-           // m_UserInterface = new UI();
         }
 
         public void OpenGarage()
         {
             UI.eGarageActions action;
             bool userWantsToQuit = false;
+            string openString = "Please choose an action:";
             
             do
             {
+                UI.PrintString(openString);
                 action = UI.GetActionFromUser();
+                UI.ClearScreen();
                 switch(action)
                 {
                     case UI.eGarageActions.InsertNewVehicle:
@@ -61,7 +62,7 @@ namespace Ex03.ConsoleUI
 
         private void insertNewVehicleToGarage()
         {
-            string licenseNumber = UI.ReadStringFromUser();
+            string licenseNumber = getLicenseNumber();
             bool isAlreadyInGarage = r_Garage.IsVehicleInGarage(licenseNumber);
             Vehicle newVehicle;
             Vehicle.eVehicleType vehicleType = new Vehicle.eVehicleType();
@@ -76,19 +77,17 @@ namespace Ex03.ConsoleUI
                 string ownerName = getOwnerName();
                 string ownerPhoneNumber = getOwnerPhoneNumber();
                 setSpecificDetailsForVehicle(newVehicle, vehicleType);
-                //r_Garage.InsertNewVehicleToGarage(newVehicle, ownerName, ownerPhoneNumber);
+                r_Garage.InsertNewVehicleToGarage(newVehicle, ownerName, ownerPhoneNumber);
             }
-
         }
 
         private void displayVehiclesInGarage()
         {
-            StringBuilder stringToPrint = new StringBuilder();
+            string stringToPrint;
             int userChoice = -1;
             List<string> vehiclesToDisplay = null;
 
-            stringToPrint.Append(@"Do you want to display all cars in garage or to sort according to status?
-                                   press 1 to display all cars, otherwise press 0...");
+            stringToPrint = "Press 0 to display vehicles sorted according to status, and 1 to display al vehicles in the garage: ";
             UI.PrintString(stringToPrint.ToString());
             userChoice = UI.ReadIntFromUser();
             if (userChoice == 1)
@@ -99,7 +98,6 @@ namespace Ex03.ConsoleUI
             {
 
                 Enum statusesInGarage = r_Garage.GetVehicleStatuses();
-                //string[] handlingStatuses = Enum.GetNames(statusesInGarage.GetType());
                 userChoice = UI.GetInputAccordingToEnum(statusesInGarage);
 
                 VehicleFolder.eVehicleStatus statusFilter = (VehicleFolder.eVehicleStatus)userChoice;
@@ -148,27 +146,26 @@ namespace Ex03.ConsoleUI
 
         private void refuel()
         {
-            StringBuilder stringToPrint = new StringBuilder();
-            float fuelToAdd;
-            int userChoice;
+            string stringToPrint;
+            float amountOfFuelToAdd;
+            FuelTank.eFuelType fuelType = new FuelTank.eFuelType();
             string carLicensePlate;
             
-            stringToPrint.Append(@"Please enter the car number");
+            stringToPrint = "Please enter the car number";
             UI.PrintString(stringToPrint.ToString());
             carLicensePlate = UI.ReadStringFromUser();
 
-            stringToPrint.Append(@"Please enter the fuel type you want to add");
+            stringToPrint = "Please enter the fuel type you want to add";
             UI.PrintString(stringToPrint.ToString());
-            carLicensePlate = UI.ReadStringFromUser();
-            Enum fuelTypes = new FuelTank.eFuelType();
-            userChoice = UI.GetInputAccordingToEnum(fuelTypes);
 
-            stringToPrint.Append(@"Please enter the amount of fuel you want to add");
+            fuelType = (FuelTank.eFuelType)UI.GetInputAccordingToEnum(fuelType);
+
+            stringToPrint = "Please enter the amount of fuel you want to add";
             UI.PrintString(stringToPrint.ToString());
-            fuelToAdd = UI.ReadFloatFromUser();
+            amountOfFuelToAdd = UI.ReadFloatFromUser();
             try
             {
-                r_Garage.Refuel(carLicensePlate, fuelToAdd, (FuelTank.eFuelType)userChoice);
+                r_Garage.Refuel(carLicensePlate, amountOfFuelToAdd, fuelType);
             }
             catch (Exception ex)
             {
@@ -178,14 +175,14 @@ namespace Ex03.ConsoleUI
 
         private void chargeTheBattery()
         {
-            StringBuilder stringToPrint = new StringBuilder();
+            string stringToPrint;
             float batteryToAdd;
             string carLicensePlate;
 
-            stringToPrint.Append(@"Please enter the car number");
+            stringToPrint = "Please enter the car number";
             UI.PrintString(stringToPrint.ToString());
             carLicensePlate = UI.ReadStringFromUser();
-            stringToPrint.Append(@"Please enter the amount of battery you want to add");
+            stringToPrint = "Please enter the amount of battery you want to add";
             UI.PrintString(stringToPrint.ToString());
             batteryToAdd = UI.ReadFloatFromUser();
             try
@@ -200,10 +197,10 @@ namespace Ex03.ConsoleUI
 
         private void displayFullDetailsOfVehicle()
         {
-            StringBuilder stringToPrint = new StringBuilder();
+            string stringToPrint;
             string carLicensePlate, vehicleFullDetails;
 
-            stringToPrint.Append(@"Please enter the car number");
+            stringToPrint = "Please enter the car number";
             UI.PrintString(stringToPrint.ToString());
             carLicensePlate = UI.ReadStringFromUser();
             try
@@ -324,7 +321,7 @@ namespace Ex03.ConsoleUI
 
         private float getRemainingEnergy()
         {
-            string stringToPrint = "Please enter the vehicle manufactur name:";
+            string stringToPrint = "Please enter the remaining amount of energy:";
             float remainingEnergy;
 
             UI.PrintString(stringToPrint);
@@ -442,5 +439,17 @@ namespace Ex03.ConsoleUI
 
             return isCarryingHazardousMaterials;
         }
+
+        private string getLicenseNumber()
+        {
+            string licenseNumber, stringToPrint = "Please enter license number:";
+
+            UI.PrintString(stringToPrint);
+            licenseNumber = UI.ReadStringFromUser();
+
+            return licenseNumber;
+        }
+
+        
     }
 }

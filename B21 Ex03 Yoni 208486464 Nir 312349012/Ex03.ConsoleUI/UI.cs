@@ -56,7 +56,7 @@ namespace Ex03.ConsoleUI
             int index = 1, userChoice;
             foreach(string str in menu)
             {
-                Console.WriteLine(string.Format("{0}. {1}{2}", index++, str, Environment.NewLine));
+               PrintString(string.Format("{0}. {1}", index++, str));
             }
 
             userChoice = ReadActionFromUser<T>(i_Enum);
@@ -210,6 +210,11 @@ namespace Ex03.ConsoleUI
             while (!isYesOrNoString);
 
             return userInput;
+        }
+
+        public static void ClearScreen()
+        {
+            Console.Clear();
         }
     }
 }

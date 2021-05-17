@@ -16,7 +16,7 @@ namespace Ex03.GarageLogic
 
 		public enum eVehicleType
         {
-			Car,
+			Car = 1,
 			MotorCycle,
 			Truck
         }
@@ -75,7 +75,7 @@ namespace Ex03.GarageLogic
         {
 			StringBuilder vehicleDetails = new StringBuilder();
 
-			vehicleDetails.AppendFormat("Plate License Number{0}{1}", m_PlateLicenseNumber,Environment.NewLine);
+			vehicleDetails.AppendFormat("Plate License Number: {0}{1}", m_PlateLicenseNumber,Environment.NewLine);
 			vehicleDetails.AppendFormat("Manufactur Name: {0}{1}", m_ManufacturName, Environment.NewLine);
 
 			return vehicleDetails.ToString();

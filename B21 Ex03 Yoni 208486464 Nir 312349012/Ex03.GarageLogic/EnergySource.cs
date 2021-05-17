@@ -13,7 +13,7 @@ namespace Ex03.GarageLogic
 
         public enum eEnergySourceType
         {
-            Fuel,
+            Fuel = 1,
             Electricbattery
         }
 

@@ -22,7 +22,7 @@ namespace Ex03.GarageLogic
 
         public enum eCarColor
         {
-            Red,
+            Red = 1,
             Silver,
             White,
             Black
@@ -30,7 +30,7 @@ namespace Ex03.GarageLogic
 
         public enum eNumberOfDoors
         {
-            Two = 2,
+            Two = 1,
             Three,
             Four,
             Five

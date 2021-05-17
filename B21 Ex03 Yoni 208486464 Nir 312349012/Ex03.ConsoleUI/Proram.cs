@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Ex03.ConsoleUI
 {
-    class Proram
+    public class Proram
     {
+        public static void Main()
+        {
+            GarageManager garageManagment = new GarageManager();
+
+            garageManagment.OpenGarage();
+        }
     }
 }
