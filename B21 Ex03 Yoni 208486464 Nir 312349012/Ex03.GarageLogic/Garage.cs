@@ -60,7 +60,7 @@ namespace Ex03.GarageLogic
             return vehiclesDetails;
         }
 
-        private void ChangeTheStatusOfCar(string i_LicenseNumber, VehicleFolder.eVehicleStatus i_NewStatus)
+        public void ChangeTheStatusOfCar(string i_LicenseNumber, VehicleFolder.eVehicleStatus i_NewStatus)
         {
             checkIfVehicleInGarage(i_LicenseNumber);
             r_Vehicles[i_LicenseNumber].Status = i_NewStatus;

@@ -10,13 +10,16 @@ namespace Ex03.ConsoleUI
 {
     class GarageManager
     {
-        private readonly Garage mr_Garage;
-        //private UI m_UserInterface;
-
+        private readonly Garage r_Garage;
+ 
         public GarageManager()
         {
-            mr_Garage = new Garage();
-           // m_UserInterface = new UI();
+            r_Garage = new Garage();
+        }
+
+        public static void Main()
+        {
+            Class1.n();
         }
 
         public void OpenGarage()
@@ -33,7 +36,7 @@ namespace Ex03.ConsoleUI
                         insertNewVehicleToGarage();
                         break;
                     case UI.eGarageActions.DisplayAllVehiclesInGarage:
-                        displayAllVehiclesInGarage();
+                        displayVehiclesInGarage();
                         break;
                     case UI.eGarageActions.ChangeTheStatusOfCar:
                         changeTheStatusOfCar();
@@ -76,45 +79,54 @@ namespace Ex03.ConsoleUI
             userChoice = UI.ReadIntFromUser();
             if (userChoice == 1)
             {
-                vehiclesToDisplay = mr_Garage.DisplayAllVehiclesInGarage(null);
+                vehiclesToDisplay = r_Garage.DisplayAllVehiclesInGarage(null);
             }
             else
             {
 
-                Enum statusesInGarage = mr_Garage.GetVehicleStatuses();
+                Enum statusesInGarage = r_Garage.GetVehicleStatuses();
                 //string[] handlingStatuses = Enum.GetNames(statusesInGarage.GetType());
                 userChoice = UI.GetInputAccordingToEnum(statusesInGarage);
 
                 VehicleFolder.eVehicleStatus statusFilter = (VehicleFolder.eVehicleStatus)userChoice;
 
-                vehiclesToDisplay = mr_Garage.DisplayAllVehiclesInGarage(statusFilter);
+                vehiclesToDisplay = r_Garage.DisplayAllVehiclesInGarage(statusFilter);
             }
 
             UI.PrintStringList(vehiclesToDisplay);
         }
 
-        private void displayAllVehiclesInGarage()
-        {
-            string[] vehicles = mr_Garage.Vehicles.Keys.ToArray();
-            foreach(string vehicle in vehicles)
-            {
-                UI.PrintString(vehicle);
-            }
-        }
+        //private void displayAllVehiclesInGarage()
+        //{
+        //    string[] vehicles = r_Garage.Vehicles.Keys.ToArray();
+        //    foreach(string vehicle in vehicles)
+        //    {
+        //        UI.PrintString(vehicle);
+        //    }
+        //}
 
-        private void displayVehiclesInSpecificStatus()
-        {
-            Enum statusesInGarage = mr_Garage.GetVehicleStatuses();
-            //string[] handlingStatuses = Enum.GetNames(statusesInGarage.GetType());
-            int userChoice = UI.GetInputAccordingToEnum(statusesInGarage);
+        //private void displayVehiclesInSpecificStatus()
+        //{
+        //    Enum statusesInGarage = r_Garage.GetVehicleStatuses();
+        //    //string[] handlingStatuses = Enum.GetNames(statusesInGarage.GetType());
+        //    int userChoice = UI.GetInputAccordingToEnum(statusesInGarage);
 
            
 
-        }
+        //}
 
         private void changeTheStatusOfCar()
         {
+            StringBuilder stringToPrint = new StringBuilder();
+            int userChoice;
+            string carLicensePlate;
 
+            stringToPrint.Append(@"Please enter the car number");
+            UI.PrintString(stringToPrint.ToString());
+            carLicensePlate = UI.ReadStringFromUser();
+            Enum statusesInGarage = new VehicleFolder.eVehicleStatus();
+            userChoice = UI.GetInputAccordingToEnum(statusesInGarage);
+            r_Garage.ChangeTheStatusOfCar(carLicensePlate, (VehicleFolder.eVehicleStatus)userChoice);
         }
 
         private void inflateTheWheels()
@@ -131,7 +143,7 @@ namespace Ex03.ConsoleUI
             airToAdd = UI.ReadFloatFromUser();
             try
             {
-                mr_Garage.InflateTheWheels(carLicensePlate, airToAdd);
+                r_Garage.InflateTheWheels(carLicensePlate, airToAdd);
             }
             catch(Exception ex)
             {
@@ -143,17 +155,25 @@ namespace Ex03.ConsoleUI
         {
             StringBuilder stringToPrint = new StringBuilder();
             float fuelToAdd;
+            int userChoice;
             string carLicensePlate;
-
+            
             stringToPrint.Append(@"Please enter the car number");
             UI.PrintString(stringToPrint.ToString());
             carLicensePlate = UI.ReadStringFromUser();
+
+            stringToPrint.Append(@"Please enter the fuel type you want to add");
+            UI.PrintString(stringToPrint.ToString());
+            carLicensePlate = UI.ReadStringFromUser();
+            Enum fuelTypes = new FuelTank.eFuelType();
+            userChoice = UI.GetInputAccordingToEnum(fuelTypes);
+
             stringToPrint.Append(@"Please enter the amount of fuel you want to add");
             UI.PrintString(stringToPrint.ToString());
             fuelToAdd = UI.ReadFloatFromUser();
             try
             {
-                mr_Garage.Refuel(carLicensePlate, fuelToAdd);
+                r_Garage.Refuel(carLicensePlate, fuelToAdd,(FuelTank.eFuelType)userChoice);
             }
             catch (Exception ex)
             {
@@ -170,12 +190,12 @@ namespace Ex03.ConsoleUI
             stringToPrint.Append(@"Please enter the car number");
             UI.PrintString(stringToPrint.ToString());
             carLicensePlate = UI.ReadStringFromUser();
-            stringToPrint.Append(@"Please enter the amount of fuel you want to add");
+            stringToPrint.Append(@"Please enter the amount of battery you want to add");
             UI.PrintString(stringToPrint.ToString());
             batteryToAdd = UI.ReadFloatFromUser();
             try
             {
-                mr_Garage.ChargeTheBattery(carLicensePlate, batteryToAdd);
+                r_Garage.ChargeTheBattery(carLicensePlate, batteryToAdd);
             }
             catch (Exception ex)
             {
@@ -193,7 +213,7 @@ namespace Ex03.ConsoleUI
             carLicensePlate = UI.ReadStringFromUser();
             try
             {
-                vehicleFullDetails = mr_Garage.DisplayFullDetailsOfVehicle(carLicensePlate);
+                vehicleFullDetails = r_Garage.DisplayFullDetailsOfVehicle(carLicensePlate);
                 UI.PrintString(vehicleFullDetails);
             }
             catch (Exception ex)
