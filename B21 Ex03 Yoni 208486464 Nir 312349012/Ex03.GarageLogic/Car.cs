@@ -45,6 +45,12 @@ namespace Ex03.GarageLogic
             m_NumberOfDoors = new eNumberOfDoors();
         }
 
+        override public void SetSpecificDetails(params object[] i_Details)
+        {
+            m_CarColor = (eCarColor)i_Details[0];
+            m_NumberOfDoors = (eNumberOfDoors)i_Details[1];
+        }
+
         public eCarColor Color
         {
             get { return m_CarColor; }

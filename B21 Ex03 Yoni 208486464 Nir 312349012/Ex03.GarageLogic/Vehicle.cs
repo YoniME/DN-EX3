@@ -21,6 +21,7 @@ namespace Ex03.GarageLogic
 			Truck
         }
 
+		
 		protected Vehicle(string i_Manufacturer, string i_PlateLicenseNumber,float i_RemainingEnergy,
 			int i_NumberOfWheels, float i_MaxAirPressure, EnergySource.eEnergySourceType i_EnergyType,
 			string i_WheelsManufacturName, float i_CurrentWheelsAirPressure)

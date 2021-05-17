@@ -152,7 +152,7 @@ namespace Ex03.ConsoleUI
             float fuelToAdd;
             int userChoice;
             string carLicensePlate;
-
+            
             stringToPrint.Append(@"Please enter the car number");
             UI.PrintString(stringToPrint.ToString());
             carLicensePlate = UI.ReadStringFromUser();
@@ -185,7 +185,7 @@ namespace Ex03.ConsoleUI
             stringToPrint.Append(@"Please enter the car number");
             UI.PrintString(stringToPrint.ToString());
             carLicensePlate = UI.ReadStringFromUser();
-            stringToPrint.Append(@"Please enter the amount of fuel you want to add");
+            stringToPrint.Append(@"Please enter the amount of battery you want to add");
             UI.PrintString(stringToPrint.ToString());
             batteryToAdd = UI.ReadFloatFromUser();
             try

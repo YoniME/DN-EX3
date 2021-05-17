@@ -125,7 +125,7 @@ namespace Ex03.ConsoleUI
             {
                 try
                 {
-                    userInput =ReadString();
+                    userInput = ReadString();
                     outputFloat = float.Parse(userInput);
                     isValidFloat = true;
                 }

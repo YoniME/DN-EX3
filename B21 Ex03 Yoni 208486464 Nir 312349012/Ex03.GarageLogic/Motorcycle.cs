@@ -37,6 +37,11 @@ namespace Ex03.GarageLogic
             m_LicenseType = new eLicenseType();
         }
 
+        override public void SetSpecificDetails(params object[] i_Details)
+        {
+            m_EngineDisplacement = (int)i_Details[0];
+            m_LicenseType = (eLicenseType)i_Details[1];
+        }
 
         public override string GetDetails()
         {

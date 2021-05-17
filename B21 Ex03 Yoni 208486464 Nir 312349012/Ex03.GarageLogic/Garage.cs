@@ -33,9 +33,10 @@ namespace Ex03.GarageLogic
             return new VehicleFolder.eVehicleStatus();
         }
 
-        public void InsertNewVehicleToGarage()
+        public void InsertNewVehicleToGarage(Vehicle i_NewVehicleInGarage, string i_VehicleOwnerName, string i_VehicleownerPhoneNumber)
         {
-            
+            VehicleFolder newVehicleFolder = new VehicleFolder(i_NewVehicleInGarage, i_VehicleOwnerName, i_VehicleownerPhoneNumber);
+            r_Vehicles.Add(i_NewVehicleInGarage.PlateLicenseNumber, newVehicleFolder);            
         }
 
         public List<string> DisplayAllVehiclesInGarage(VehicleFolder.eVehicleStatus? i_VehicleStatusFilter)

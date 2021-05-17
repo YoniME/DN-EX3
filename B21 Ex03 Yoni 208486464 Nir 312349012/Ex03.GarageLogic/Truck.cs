@@ -18,6 +18,7 @@ namespace Ex03.GarageLogic
         private float m_MaxCarryingWeight;
         private bool m_IsCarryingHazardousMaterials;
 
+        
         public Truck(string i_Manufacturer, string i_PlateLicenseNumber, float i_RemainingEnergy,
             EnergySource.eEnergySourceType i_EnergyType, string i_WheelsManufacturName, float i_CurrentWheelsAirPressure) :
             base(i_Manufacturer, i_PlateLicenseNumber, i_RemainingEnergy, k_NumberOfWheels,
@@ -25,6 +26,12 @@ namespace Ex03.GarageLogic
         {
             m_MaxCarryingWeight = 0;
             m_IsCarryingHazardousMaterials = false;
+        }
+
+        override public void SetSpecificDetails(params object[] i_Details)
+        {
+            m_MaxCarryingWeight = (float)i_Details[0];
+            m_IsCarryingHazardousMaterials = (bool)i_Details[1];
         }
 
         public float MaxCarryingWeight
