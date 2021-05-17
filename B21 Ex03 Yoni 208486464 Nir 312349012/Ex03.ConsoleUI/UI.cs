@@ -185,5 +185,33 @@ namespace Ex03.ConsoleUI
             return userInput;
         }
 
+        public static string ReadYesOrNoFromUser()
+        {
+            bool isYesOrNoString = false, isFirstRun = true; ;
+            string userInput = String.Empty, yes = "yes", no = "no";
+            
+
+            do
+            {
+                try
+                {
+                    if (!isFirstRun)
+                    {
+                        UI.PrintString("You can only answer yes / no. Please answer again");
+                    }
+                    isFirstRun = false;
+                    userInput = ReadString();
+                    isYesOrNoString = userInput.Trim().ToLower().Equals(yes) || userInput.Trim().ToLower().Equals(no);
+                }
+                catch (FormatException)
+                {
+                    PrintInvalidInputMessage();
+                }
+            }
+            while (!isYesOrNoString);
+
+            return userInput;
+        }
+
     }
 }

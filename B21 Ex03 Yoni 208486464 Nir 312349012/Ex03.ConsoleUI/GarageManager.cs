@@ -64,6 +64,7 @@ namespace Ex03.ConsoleUI
             string licenseNumber = UI.ReadStringFromUser();
             bool isAlreadyInGarage = r_Garage.IsVehicleInGarage(licenseNumber);
             Vehicle newVehicle;
+            Vehicle.eVehicleType vehicleType = new Vehicle.eVehicleType();
             
             if (isAlreadyInGarage)
             {
@@ -71,11 +72,11 @@ namespace Ex03.ConsoleUI
             }
             else
             {
-                newVehicle = setNewVehicle(licenseNumber);
+                newVehicle = setNewVehicle(licenseNumber, ref vehicleType);
                 string ownerName = getOwnerName();
                 string ownerPhoneNumber = getOwnerPhoneNumber();
-                //set specific detail
-                //add to dictionary
+                setSpecificDetailsForVehicle(newVehicle, vehicleType);
+                //r_Garage.InsertNewVehicleToGarage(newVehicle, ownerName, ownerPhoneNumber);
             }
 
         }
@@ -217,22 +218,21 @@ namespace Ex03.ConsoleUI
            
         }
 
-        private Vehicle setNewVehicle(string i_LicenseNumber)
+        private Vehicle setNewVehicle(string i_LicenseNumber, ref Vehicle.eVehicleType io_VehicleType)
         {
             string vehicleManufacturName, wheelsManufacturName;
-            Vehicle.eVehicleType vehicleType;
             EnergySource.eEnergySourceType energyType;
             float remainingEnergy, wheelsCurrentAirPressure;
             Vehicle newVehicle;
 
-            vehicleType = getVehicleType();
-            energyType = getEnergySource(vehicleType);
+            io_VehicleType = getVehicleType();
+            energyType = getEnergySource(io_VehicleType);
             vehicleManufacturName = getVehicleManufacturName();
             remainingEnergy = getRemainingEnergy();
             wheelsManufacturName = getWheelsManufacturName();
             wheelsCurrentAirPressure = getWheelsCurrentAirPressure();
 
-            newVehicle = VehicleCreator.CreateTheVehicle(vehicleType, vehicleManufacturName, i_LicenseNumber, remainingEnergy,
+            newVehicle = VehicleCreator.CreateTheVehicle(io_VehicleType, vehicleManufacturName, i_LicenseNumber, remainingEnergy,
                 energyType, wheelsManufacturName, wheelsCurrentAirPressure);
 
             return newVehicle;
@@ -258,17 +258,26 @@ namespace Ex03.ConsoleUI
 
         private void setCarDetails(Vehicle i_NewVehicle)
         {
-            i_NewVehicle.SetSpecificDetails();
+            Car.eCarColor carColor = getCarColor();
+            Car.eNumberOfDoors carNumberOfDoors = getCarNumberOfDoors();
+
+            i_NewVehicle.SetSpecificDetails(carColor, carNumberOfDoors);
         }
 
         private void setTruckDetails(Vehicle i_NewVehicle)
         {
-            i_NewVehicle.SetSpecificDetails();
+            float maxCarryingWeight = getTruckMaxCarryingWeight();
+            bool isCarryingHazardousMaterials = getIfTruckIsCarryingHazardousMaterials();
+
+            i_NewVehicle.SetSpecificDetails(maxCarryingWeight, isCarryingHazardousMaterials);
         }
 
         private void setMotorcycleDetails(Vehicle i_NewVehicle)
         {
-            i_NewVehicle.SetSpecificDetails();
+            int engineDisplacement = getMotorcycleEngineDisplacement();
+            Motorcycle.eLicenseType licenseType = getMotorcycleLicenseType();
+
+            i_NewVehicle.SetSpecificDetails(engineDisplacement, licenseType);
         }
 
 
@@ -363,6 +372,75 @@ namespace Ex03.ConsoleUI
             ownerPhoneNumber = UI.ReadStringContainsNumbersOnlyFromUser();
 
             return ownerPhoneNumber;
+        }
+
+        private Car.eCarColor getCarColor()
+        {
+            Car.eCarColor userChoice = new Car.eCarColor();
+            string stringToPrint = "Please choose color:";
+
+            UI.PrintString(stringToPrint);
+            userChoice = (Car.eCarColor)UI.GetInputAccordingToEnum(userChoice);
+
+            return userChoice;
+        }
+
+        private Car.eNumberOfDoors getCarNumberOfDoors()
+        {
+            Car.eNumberOfDoors userChoice = new Car.eNumberOfDoors();
+            string stringToPrint = "Please choose number of doors:";
+
+            UI.PrintString(stringToPrint);
+            userChoice = (Car.eNumberOfDoors)UI.GetInputAccordingToEnum(userChoice);
+
+            return userChoice;
+        }
+
+
+        private int getMotorcycleEngineDisplacement()
+        {
+            int userChoice;
+            string stringToPrint = "Please choose the engine displacement:";
+
+            UI.PrintString(stringToPrint);
+            userChoice = UI.ReadIntFromUser();
+
+            return userChoice;
+        }
+
+        private Motorcycle.eLicenseType getMotorcycleLicenseType()
+        {
+            Motorcycle.eLicenseType userChoice = new Motorcycle.eLicenseType();
+            string stringToPrint = "Please choose the lisence type:";
+
+            UI.PrintString(stringToPrint);
+            userChoice = (Motorcycle.eLicenseType)UI.GetInputAccordingToEnum(userChoice);
+
+            return userChoice;
+        }
+
+        private float getTruckMaxCarryingWeight()
+        {
+            float userChoice;
+            string stringToPrint = "Please choose the max carrying weight:";
+
+            UI.PrintString(stringToPrint);
+            userChoice = UI.ReadFloatFromUser();
+
+            return userChoice;
+        }
+
+        private bool getIfTruckIsCarryingHazardousMaterials()
+        {
+            bool isCarryingHazardousMaterials;
+            string stringToPrint = "Does the truck can carry hazardous materials? yes/no";
+            string userChoice, yes = "yes";
+
+            UI.PrintString(stringToPrint);
+            userChoice = UI.ReadYesOrNoFromUser();
+            isCarryingHazardousMaterials = userChoice.Equals(yes);
+
+            return isCarryingHazardousMaterials;
         }
     }
 }
