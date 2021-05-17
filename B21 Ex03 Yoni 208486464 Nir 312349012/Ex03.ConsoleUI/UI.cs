@@ -162,5 +162,28 @@ namespace Ex03.ConsoleUI
             return userInput;
         }
 
+        public static string ReadStringContainsNumbersOnlyFromUser()
+        {
+            bool isNumbersString = false;
+            string userInput = String.Empty;
+
+            do
+            {
+                try
+                {
+                    userInput = ReadStringFromUser();
+                    long.Parse(userInput);
+                    isNumbersString = true;
+                }
+                catch (FormatException)
+                {
+                    PrintInvalidInputMessage();
+                }
+            }
+            while (!isNumbersString);
+
+            return userInput;
+        }
+
     }
 }

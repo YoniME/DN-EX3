@@ -9,7 +9,9 @@ namespace Ex03.GarageLogic
 {
     public class VehicleCreator
     {
-        public Vehicle CreateTheVehicle(Vehicle.eVehicleType i_VehicleType, string i_ManufacturName, string i_LicenseNumber, float i_RemainingEnergy, EnergySource.eTypeOfSource i_SourceType)
+        public static Vehicle CreateTheVehicle(Vehicle.eVehicleType i_VehicleType, string i_ManufacturName,
+			string i_LicenseNumber, float i_RemainingEnergy, EnergySource.eEnergySourceType i_SourceType,
+			string i_WheelsManufacturName, float i_CurrentWheelsAirPressure)
         {
             Vehicle vehicleToCreate = null;
 
@@ -17,13 +19,13 @@ namespace Ex03.GarageLogic
 			switch (i_VehicleType)
 			{
 				case Vehicle.eVehicleType.Car:
-					vehicleToCreate = new Car();
+					vehicleToCreate = new Car(i_ManufacturName, i_LicenseNumber, i_RemainingEnergy, i_SourceType, i_WheelsManufacturName, i_CurrentWheelsAirPressure);
 					break;
 				case Vehicle.eVehicleType.MotorCycle:
-					vehicleToCreate = new Motorcycle();
+					vehicleToCreate = new Motorcycle(i_ManufacturName, i_LicenseNumber, i_RemainingEnergy, i_SourceType, i_WheelsManufacturName, i_CurrentWheelsAirPressure);
 					break;
 				case Vehicle.eVehicleType.Truck:
-					vehicleToCreate = new Truck();
+					vehicleToCreate = new Truck(i_ManufacturName, i_LicenseNumber, i_RemainingEnergy, i_SourceType, i_WheelsManufacturName, i_CurrentWheelsAirPressure);
 					break;
 			}
 

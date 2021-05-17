@@ -95,6 +95,7 @@ namespace Ex03.GarageLogic
 		}
 
 		public abstract void setEnergySource(float i_RemainingEnergy);
+		public abstract void SetSpecificDetails(params object[] i_Details);
 
 	}
 }
