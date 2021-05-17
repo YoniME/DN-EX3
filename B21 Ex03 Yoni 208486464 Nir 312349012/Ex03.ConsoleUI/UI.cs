@@ -47,7 +47,6 @@ namespace Ex03.ConsoleUI
             int userChoice = GetInputAccordingToEnum<eGarageActions>(action);
 
             return (eGarageActions)userChoice;
-
         }
 
         public static int GetInputAccordingToEnum<T>(T i_Enum)

@@ -48,12 +48,12 @@ namespace Ex03.GarageLogic
                 {
                     if (vehicle.Status == i_VehicleStatusFilter)
                     {
-                        vehiclesDetails.Add(vehicle.Vehicle.GetDetails());
+                        vehiclesDetails.Add(vehicle.Vehicle.PlateLicenseNumber);
                     }
                 }
                 else
                 {
-                    vehiclesDetails.Add(vehicle.Vehicle.GetDetails());
+                    vehiclesDetails.Add(vehicle.Vehicle.PlateLicenseNumber);
                 }
             }
 

@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ex03.GarageLogic;
+
 
 namespace Ex03.ConsoleUI
 {
     class GarageManager
     {
-        private readonly GarageLogic.Garage mr_Garage;
+        private readonly Garage mr_Garage;
         //private UI m_UserInterface;
 
         public GarageManager()
         {
-            mr_Garage = new GarageLogic.Garage();
+            mr_Garage = new Garage();
            // m_UserInterface = new UI();
         }
 
@@ -74,14 +76,18 @@ namespace Ex03.ConsoleUI
             userChoice = UI.ReadIntFromUser();
             if (userChoice == 1)
             {
-                //vehiclesToDisplay = mr_Garage.DisplayAllVehiclesInGarage();
+                vehiclesToDisplay = mr_Garage.DisplayAllVehiclesInGarage(null);
             }
             else
             {
+
                 Enum statusesInGarage = mr_Garage.GetVehicleStatuses();
                 //string[] handlingStatuses = Enum.GetNames(statusesInGarage.GetType());
                 userChoice = UI.GetInputAccordingToEnum(statusesInGarage);
-                //vehiclesToDisplay = mr_Garage.DisplayAllVehiclesInGarage((statusesInGarage.GetType())userChoice);
+
+                VehicleFolder.eVehicleStatus statusFilter = (VehicleFolder.eVehicleStatus)userChoice;
+
+                vehiclesToDisplay = mr_Garage.DisplayAllVehiclesInGarage(statusFilter);
             }
 
             UI.PrintStringList(vehiclesToDisplay);
@@ -89,10 +95,10 @@ namespace Ex03.ConsoleUI
 
         private void displayAllVehiclesInGarage()
         {
-            string[] cars = mr_Garage.Vehicles.Keys.ToArray();
-            foreach(string car in cars)
+            string[] vehicles = mr_Garage.Vehicles.Keys.ToArray();
+            foreach(string vehicle in vehicles)
             {
-                UI.PrintString(car);
+                UI.PrintString(vehicle);
             }
         }
 
