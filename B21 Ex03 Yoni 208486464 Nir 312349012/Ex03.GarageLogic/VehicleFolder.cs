@@ -25,6 +25,14 @@ namespace Ex03.GarageLogic
             
         }
 
+        public VehicleFolder(Vehicle i_Vehicle ,string i_VehicleOwnerName, string i_VehicleownerPhoneNumber)
+        {
+            m_Vehicle = i_Vehicle;
+            m_VehicleOwnerName = i_VehicleOwnerName;
+            m_PhoneNumber = i_VehicleownerPhoneNumber;
+            m_VehicleStatus = new eVehicleStatus();
+        }
+
         public string Name
         {
             get { return m_VehicleOwnerName; }

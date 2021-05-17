@@ -40,8 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Car.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Class2.cs" />
     <Compile Include="ElectricBattery.cs" />
     <Compile Include="EnergySource.cs" />
     <Compile Include="FuelTank.cs" />
@@ -49,6 +47,7 @@
     <Compile Include="Motorcycle.cs" />
     <Compile Include="Truck.cs" />
     <Compile Include="ValueOutOfRangeException.cs" />
+    <Compile Include="VehicleCreator.cs" />
     <Compile Include="VehicleFolder.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="Wheel.cs" />

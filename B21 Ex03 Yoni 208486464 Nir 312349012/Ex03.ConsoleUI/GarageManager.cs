@@ -19,11 +19,6 @@ namespace Ex03.ConsoleUI
            // m_UserInterface = new UI();
         }
 
-        public static void Main()
-        {
-            Class1.n();
-        }
-
         public void OpenGarage()
         {
             UI.eGarageActions action;
