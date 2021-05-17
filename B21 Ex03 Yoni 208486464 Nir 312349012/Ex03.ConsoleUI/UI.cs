@@ -189,7 +189,6 @@ namespace Ex03.ConsoleUI
         {
             bool isYesOrNoString = false, isFirstRun = true; ;
             string userInput = String.Empty, yes = "yes", no = "no";
-            
 
             do
             {
@@ -212,6 +211,5 @@ namespace Ex03.ConsoleUI
 
             return userInput;
         }
-
     }
 }
