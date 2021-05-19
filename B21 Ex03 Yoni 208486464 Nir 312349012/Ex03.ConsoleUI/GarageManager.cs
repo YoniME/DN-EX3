@@ -39,7 +39,7 @@ namespace Ex03.ConsoleUI
                         displayVehiclesInGarage();
                         break;
                     case UI.eGarageActions.ChangeTheStatusOfCar:
-                        changeTheStatusOfCar();
+                        changeTheStatusOfVehicle();
                         break;
                     case UI.eGarageActions.InflateTheWheels:
                         inflateTheWheels();
@@ -110,20 +110,20 @@ namespace Ex03.ConsoleUI
             UI.PrintStringList(vehiclesToDisplay);
         }
 
-        private void changeTheStatusOfCar()
+        private void changeTheStatusOfVehicle()
         {
             string stringToPrint;
             int userChoice;
-            string carLicensePlate;
+            string licenseNumber;
             VehicleFolder.eVehicleStatus statusesInGarage = new VehicleFolder.eVehicleStatus();
 
-            stringToPrint = "Please enter the car number";
+            stringToPrint = "Please enter the vehicle number";
             UI.PrintString(stringToPrint);
-            carLicensePlate = UI.ReadStringFromUser();
+            licenseNumber = UI.ReadStringFromUser();
             userChoice = UI.GetInputAccordingToEnum(statusesInGarage);
             try
             {
-                r_Garage.ChangeTheStatusOfCar(carLicensePlate, (VehicleFolder.eVehicleStatus)userChoice);
+                r_Garage.ChangeTheStatusOfCar(licenseNumber, (VehicleFolder.eVehicleStatus)userChoice);
             }
             catch (ArgumentException exception)
             {
@@ -135,17 +135,17 @@ namespace Ex03.ConsoleUI
         {
             StringBuilder stringToPrint = new StringBuilder();
             float airToAdd;
-            string carLicensePlate;
+            string licenseNumber;
 
-            stringToPrint.Append(@"Please enter the car number");
+            stringToPrint.Append(@"Please enter the vehicle number");
             UI.PrintString(stringToPrint.ToString());
-            carLicensePlate = UI.ReadStringFromUser();
+            licenseNumber = UI.ReadStringFromUser();
             stringToPrint.Append(@"Please enter the amount of air you want to add");
             UI.PrintString(stringToPrint.ToString());
             airToAdd = UI.ReadFloatFromUser();
             try
             {
-                r_Garage.InflateTheWheels(carLicensePlate, airToAdd);
+                r_Garage.InflateTheWheels(licenseNumber, airToAdd);
             }
             catch(Exception exception)
             {
@@ -158,11 +158,11 @@ namespace Ex03.ConsoleUI
             string stringToPrint;
             float amountOfFuelToAdd;
             FuelTank.eFuelType fuelType = new FuelTank.eFuelType();
-            string carLicensePlate;
+            string licenseNumber;
             
-            stringToPrint = "Please enter the car number";
+            stringToPrint = "Please enter the vehicle number";
             UI.PrintString(stringToPrint.ToString());
-            carLicensePlate = UI.ReadStringFromUser();
+            licenseNumber = UI.ReadStringFromUser();
 
             stringToPrint = "Please enter the fuel type you want to add";
             UI.PrintString(stringToPrint.ToString());
@@ -174,7 +174,7 @@ namespace Ex03.ConsoleUI
             amountOfFuelToAdd = UI.ReadFloatFromUser();
             try
             {
-                r_Garage.Refuel(carLicensePlate, amountOfFuelToAdd, fuelType);
+                r_Garage.Refuel(licenseNumber, amountOfFuelToAdd, fuelType);
             }
             catch (Exception exception)
             {
@@ -186,17 +186,17 @@ namespace Ex03.ConsoleUI
         {
             string stringToPrint;
             float batteryToAdd;
-            string carLicensePlate;
+            string licenseNumber;
 
-            stringToPrint = "Please enter the car number";
+            stringToPrint = "Please enter the vehicle number";
             UI.PrintString(stringToPrint.ToString());
-            carLicensePlate = UI.ReadStringFromUser();
+            licenseNumber = UI.ReadStringFromUser();
             stringToPrint = "Please enter the amount of battery you want to add";
             UI.PrintString(stringToPrint.ToString());
             batteryToAdd = UI.ReadFloatFromUser();
             try
             {
-                r_Garage.ChargeTheBattery(carLicensePlate, batteryToAdd);
+                r_Garage.ChargeTheBattery(licenseNumber, batteryToAdd);
             }
             catch (Exception exception)
             {
@@ -207,14 +207,14 @@ namespace Ex03.ConsoleUI
         private void displayFullDetailsOfVehicle()
         {
             string stringToPrint;
-            string carLicensePlate, vehicleFullDetails;
+            string licenseNumber, vehicleFullDetails;
 
             stringToPrint = "Please enter the car number";
             UI.PrintString(stringToPrint.ToString());
-            carLicensePlate = UI.ReadStringFromUser();
+            licenseNumber = UI.ReadStringFromUser();
             try
             {
-                vehicleFullDetails = r_Garage.DisplayFullDetailsOfVehicle(carLicensePlate);
+                vehicleFullDetails = r_Garage.DisplayFullDetailsOfVehicle(licenseNumber);
                 UI.PrintString(vehicleFullDetails);
             }
             catch (Exception exception)

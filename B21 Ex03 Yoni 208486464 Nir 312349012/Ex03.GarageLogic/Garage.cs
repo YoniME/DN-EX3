@@ -100,7 +100,7 @@ namespace Ex03.GarageLogic
         {
             checkIfVehicleInGarage(i_LicenseNumber);
 
-            return r_Vehicles[i_LicenseNumber].Vehicle.GetDetails();
+            return r_Vehicles[i_LicenseNumber].GetFolderDetails();
         }
 
         private void checkIfVehicleInGarage(string i_LicenseNumber)

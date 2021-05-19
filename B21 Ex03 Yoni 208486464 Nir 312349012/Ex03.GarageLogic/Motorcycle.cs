@@ -48,10 +48,11 @@ namespace Ex03.GarageLogic
         {
             StringBuilder motorcycleDetails = new StringBuilder();
 
+            motorcycleDetails.AppendFormat("Vehicle type: {0}{1}", this.GetType().Name, Environment.NewLine);
             motorcycleDetails.AppendFormat("{0}", base.GetDetails());
             motorcycleDetails.AppendFormat("License type: {0}{1}", m_LicenseType.ToString(), Environment.NewLine);
             motorcycleDetails.AppendFormat("Engine displacement: {0}{1}",m_EngineDisplacement.ToString(), Environment.NewLine);
-            motorcycleDetails.AppendFormat("{0}{1}", EnergySource.GetEnergySourceDetails());
+            motorcycleDetails.AppendFormat("{0}{1}", EnergySource.GetEnergySourceDetails(), Environment.NewLine);
             motorcycleDetails.AppendFormat("{0}", GetWheelsDetails());
 
             return motorcycleDetails.ToString();

@@ -56,5 +56,16 @@ namespace Ex03.GarageLogic
             get { return m_Vehicle; }
         }
 
+        public string GetFolderDetails()
+        {
+            StringBuilder folderDetails = new StringBuilder();
+            folderDetails.AppendFormat("Owner name: {0}{1}", m_VehicleOwnerName, Environment.NewLine);
+            folderDetails.AppendFormat("Owner phone number: {0}{1}", m_PhoneNumber.ToString(), Environment.NewLine);
+            folderDetails.AppendFormat("Vehicle status: {0}{1}", m_VehicleStatus.ToString(), Environment.NewLine);
+            folderDetails.AppendFormat("{0}", m_Vehicle.GetDetails());
+
+            return folderDetails.ToString();
+        }
+
     }
 }

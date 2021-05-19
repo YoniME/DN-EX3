@@ -52,6 +52,7 @@ namespace Ex03.GarageLogic
         {
             StringBuilder truckDetails = new StringBuilder();
 
+            truckDetails.AppendFormat("Vehicle type: {0}{1}", this.GetType().Name, Environment.NewLine);
             truckDetails.AppendFormat("{0}", base.GetDetails());
             truckDetails.AppendFormat("Is carrying hazardous materials: {0}{1}", m_IsCarryingHazardousMaterials.ToString(), Environment.NewLine);
             truckDetails.AppendFormat("Max carrying weight: {0}{1}", m_MaxCarryingWeight.ToString(), Environment.NewLine);
@@ -110,7 +111,5 @@ Otherwise enter 'false':", GetType().GetMethod("SetIsCarryingHazardousMaterials"
                 m_IsCarryingHazardousMaterials = IsCarryingHazardous;
             }
         }
-
-
     }
 }

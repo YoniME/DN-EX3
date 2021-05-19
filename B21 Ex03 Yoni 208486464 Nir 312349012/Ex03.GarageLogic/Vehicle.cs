@@ -102,13 +102,13 @@ namespace Ex03.GarageLogic
 
 		public string GetWheelsDetails()
         {
-			int numberOfWheels = Wheels.Count, index = 1 ;
+			int index = 1 ;
 			StringBuilder wheelsDetails = new StringBuilder();
 
-			wheelsDetails.AppendFormat("Number of wheels: {0}{1}", numberOfWheels.ToString(), Environment.NewLine);
+			wheelsDetails.AppendFormat("Number of wheels: {0}{1}", Wheels.Count.ToString(), Environment.NewLine);
 			foreach (Wheel wheel in m_Wheels)
 			{ 
-				wheelsDetails.AppendFormat("{0}. {1}{2}", index.ToString(),wheel.GetDetails() , Environment.NewLine);
+				wheelsDetails.AppendFormat("{0}.{1}{2}{3}", index.ToString(), Environment.NewLine, wheel.GetDetails() , Environment.NewLine);
 				index++;
 			}
 
