@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Ex03.GarageLogic
 {
@@ -72,6 +73,55 @@ namespace Ex03.GarageLogic
             EnergySource.MaxEnergySourceCapacity = maxCapacity;
             EnergySource.RemainingEnergy = maxCapacity * i_RemainingEnergyPrecentage / 100;
         }
+
+
+        public override Dictionary<string, MethodInfo> GetSpecificParameters()
+        {
+            Dictionary<string, MethodInfo> specificParametersForCar = new Dictionary<string, MethodInfo>();
+            specificParametersForCar.Add(@"Please enter the motorcycle engine displacement:", GetType().GetMethod("SetEngineDisplacement"));
+            specificParametersForCar.Add(
+@"Please enter the license type of the motorcycle:
+1. A
+2. B1
+3. AA
+4. BB", GetType().GetMethod("SetLicenseType"));
+
+            return specificParametersForCar;
+        }
+
+        public void SetEngineDisplacement(string i_UserInput)
+        {
+            int engineDisplacement;
+            bool isValidInput;
+
+            isValidInput = int.TryParse(i_UserInput, out engineDisplacement);
+            if (!isValidInput)
+            {
+                throw new ArgumentException("Invalid input " + i_UserInput);
+            }
+            else
+            {
+                m_EngineDisplacement = engineDisplacement;
+            }
+        }
+
+        public void SetLicenseType(string i_UserInput)
+        {
+            int actionNumber;
+            bool isValidAction;
+
+            actionNumber = int.Parse(i_UserInput);
+            isValidAction = Enum.IsDefined(typeof(eLicenseType), actionNumber);
+            if (!isValidAction)
+            {
+                throw new ArgumentException("Invalid input " + i_UserInput);
+            }
+            else
+            {
+                m_LicenseType = (eLicenseType)actionNumber;
+            }
+        }
+
 
 
     }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Reflection;
+
 namespace Ex03.GarageLogic
 {
     public class Truck : Vehicle
@@ -64,5 +66,50 @@ namespace Ex03.GarageLogic
             EnergySource.MaxEnergySourceCapacity = k_MaxFuelTankCapacity;
             EnergySource.RemainingEnergy = k_MaxFuelTankCapacity * i_RemainingEnergyPrecentage / 100;
         }
+
+        public override Dictionary<string, MethodInfo> GetSpecificParameters()
+        {
+            Dictionary<string, MethodInfo> specificParametersForCar = new Dictionary<string, MethodInfo>();
+            specificParametersForCar.Add(@"Please enter the max cariage weight of the truck:", GetType().GetMethod("SetMaxCarryingWeight"));
+            specificParametersForCar.Add(@"Please enter 'true' if the truck is carrying hazardous materials.
+Otherwise enter 'false':", GetType().GetMethod("SetIsCarryingHazardousMaterials"));
+
+            return specificParametersForCar;
+
+        }
+
+        public void SetMaxCarryingWeight(string i_UserInput)
+        {
+            float maxWeight;
+            bool isValidInput;
+
+            isValidInput = float.TryParse(i_UserInput, out maxWeight);
+            if (!isValidInput)
+            {
+                throw new ArgumentException("Invalid input " + i_UserInput);
+            }
+            else
+            {
+                m_MaxCarryingWeight = maxWeight;
+            }
+        }
+
+        public void SetIsCarryingHazardousMaterials(string i_UserInput)
+        {
+            bool IsCarryingHazardous;
+            bool isValidInput;
+
+            isValidInput = bool.TryParse(i_UserInput, out IsCarryingHazardous);
+            if (!isValidInput)
+            {
+                throw new ArgumentException("Invalid input "+i_UserInput);
+            }
+            else
+            {
+                m_IsCarryingHazardousMaterials = IsCarryingHazardous;
+            }
+        }
+
+
     }
 }

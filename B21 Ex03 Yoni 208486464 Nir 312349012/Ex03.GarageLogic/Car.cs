@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Ex03.GarageLogic
 {
@@ -93,5 +94,63 @@ namespace Ex03.GarageLogic
             EnergySource.MaxEnergySourceCapacity = maxCapacity;
             EnergySource.RemainingEnergy = maxCapacity * i_RemainingEnergyPrecentage / 100;
         }
+
+        public override Dictionary<string, MethodInfo> GetSpecificParameters()
+        {
+            Dictionary<string, MethodInfo> specificParametersForCar = new Dictionary<string, MethodInfo>();
+            specificParametersForCar.Add(
+@"Please enter the number of the color you want for your car:
+1. Red
+2. Silver
+3. White
+4. Black", GetType().GetMethod("SetColorOfCar"));
+            specificParametersForCar.Add(
+@"Please enter the number of doors you want for your car:
+1. Two
+2. Three
+3. Four
+4. Five", GetType().GetMethod("SetNumberOfDoors"));
+
+            return specificParametersForCar;
+
+        }
+
+
+        public void SetColorOfCar(string i_NumerOfEnumColor)
+        {
+            int actionNumber;
+            bool isValidAction;
+
+            actionNumber = int.Parse(i_NumerOfEnumColor);
+            isValidAction = Enum.IsDefined(typeof(eCarColor), actionNumber);
+            if (!isValidAction)
+            {
+                throw new ArgumentException("Invalid input " + i_NumerOfEnumColor);
+            }
+            else
+            {
+                m_CarColor = (eCarColor)actionNumber;
+            }
+        }
+        
+
+        public void SetNumberOfDoors(string i_NumerOfEnumDoors)
+        {
+            int actionNumber;
+            bool isValidAction;
+
+            actionNumber = int.Parse(i_NumerOfEnumDoors);
+            isValidAction = Enum.IsDefined(typeof(eNumberOfDoors), actionNumber);
+            if (!isValidAction)
+            {
+                throw new ArgumentException("Invalid input");
+            }
+            else
+            {
+                m_NumberOfDoors = (eNumberOfDoors)actionNumber;
+            }
+        }
+
+
     }
 }

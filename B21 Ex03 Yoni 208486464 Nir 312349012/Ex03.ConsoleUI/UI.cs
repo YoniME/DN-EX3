@@ -66,17 +66,12 @@ namespace Ex03.ConsoleUI
         public static int ReadActionFromUser<T>(T i_Enum)
         {
             int actionNumber = 0, enumSize = Enum.GetNames(typeof(T)).Length;
-            bool isValidAction = false, isFirstRun = true; ;
+            bool isValidAction = false, isFirstRound = true;
 
             do
             {
                 try
                 {
-                    if (!isFirstRun)
-                    {
-                        PrintInvalidInputMessage();
-                    }
-                    isFirstRun = false;
                     actionNumber = ReadIntFromUser();
                     isValidAction = Enum.IsDefined(typeof(T), actionNumber);
                 }

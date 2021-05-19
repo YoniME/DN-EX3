@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Reflection;
+
 namespace Ex03.GarageLogic
 {
     public abstract class Vehicle
@@ -92,7 +94,10 @@ namespace Ex03.GarageLogic
 		}
 
 		public abstract void setEnergySource(float i_RemainingEnergy);
+
 		public abstract void SetSpecificDetails(params object[] i_Details);
+
+		public abstract Dictionary<string, MethodInfo> GetSpecificParameters();
 
 	}
 }

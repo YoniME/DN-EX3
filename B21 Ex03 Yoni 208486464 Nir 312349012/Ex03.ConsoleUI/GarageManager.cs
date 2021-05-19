@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Ex03.GarageLogic;
 
+using System.Reflection;
+
 
 namespace Ex03.ConsoleUI
 {
@@ -76,8 +78,10 @@ namespace Ex03.ConsoleUI
                 newVehicle = setNewVehicle(licenseNumber, ref vehicleType);
                 string ownerName = getOwnerName();
                 string ownerPhoneNumber = getOwnerPhoneNumber();
-                setSpecificDetailsForVehicle(newVehicle, vehicleType);
+                //setSpecificDetailsForVehicle(newVehicle, vehicleType);
+                setSpecificVehicleParameters(newVehicle);
                 r_Garage.InsertNewVehicleToGarage(newVehicle, ownerName, ownerPhoneNumber);
+                
             }
         }
 
@@ -87,7 +91,7 @@ namespace Ex03.ConsoleUI
             int userChoice = -1;
             List<string> vehiclesToDisplay = null;
 
-            stringToPrint = "Press 0 to display vehicles sorted according to status, and 1 to display al vehicles in the garage: ";
+            stringToPrint = "Press 0 to display vehicles sorted according to status, and 1 to display all vehicles in the garage: ";
             UI.PrintString(stringToPrint.ToString());
             userChoice = UI.ReadIntFromUser();
             if (userChoice == 1)
@@ -233,47 +237,80 @@ namespace Ex03.ConsoleUI
             return newVehicle;
         }
 
-        private void setSpecificDetailsForVehicle(Vehicle i_NewVehicle, Vehicle.eVehicleType i_TypeOfVehicle)
+        //private void setSpecificDetailsForVehicle(Vehicle i_NewVehicle, Vehicle.eVehicleType i_TypeOfVehicle)
+        //{
+        //    switch(i_TypeOfVehicle)
+        //    {
+        //        case Vehicle.eVehicleType.Car:
+        //            //setCarDetails(i_NewVehicle);
+        //            setSpecificVehicleParameters(i_NewVehicle);
+        //            break;
+
+        //        case Vehicle.eVehicleType.MotorCycle:
+        //            //setMotorcycleDetails(i_NewVehicle);
+        //            setSpecificVehicleParameters(i_NewVehicle);
+        //            break;
+
+        //        case Vehicle.eVehicleType.Truck:
+        //            //setTruckDetails(i_NewVehicle);
+        //            setSpecificVehicleParameters(i_NewVehicle);
+        //            break;
+        //    }
+        //}
+
+        private void setSpecificVehicleParameters(Vehicle i_NewVehicle)
         {
-            switch(i_TypeOfVehicle)
+            string userInput, finalStateToPrint = "Vehicle entered the garage successfully";
+            bool isSetsucceeded = false;
+            Dictionary<string, MethodInfo> specificParameters = i_NewVehicle.GetSpecificParameters();
+
+            foreach (KeyValuePair<string, MethodInfo> specificProperty in specificParameters)
             {
-                case Vehicle.eVehicleType.Car:
-                    setCarDetails(i_NewVehicle);
-                    break;
+                do
+                {
+                    try
+                    {
+                        UI.PrintString(specificProperty.Key);
+                        userInput = UI.ReadString();
+                        specificProperty.Value.Invoke(i_NewVehicle, new object[] { userInput });
+                        isSetsucceeded = true;
+                    }
+                    catch
+                    { 
+                        UI.PrintInvalidInputMessage();
+                        isSetsucceeded = false;
+                    }
 
-                case Vehicle.eVehicleType.MotorCycle:
-                    setMotorcycleDetails(i_NewVehicle);
-                    break;
+                } while (!isSetsucceeded);
+            }   
 
-                case Vehicle.eVehicleType.Truck:
-                    setTruckDetails(i_NewVehicle);
-                    break;
-            }
+            UI.ClearScreen();
+            UI.PrintString(finalStateToPrint);
         }
 
-        private void setCarDetails(Vehicle i_NewVehicle)
-        {
-            Car.eCarColor carColor = getCarColor();
-            Car.eNumberOfDoors carNumberOfDoors = getCarNumberOfDoors();
+        //private void setCarDetails(Vehicle i_NewVehicle)
+        //{
+        //    Car.eCarColor carColor = getCarColor();
+        //    Car.eNumberOfDoors carNumberOfDoors = getCarNumberOfDoors();
 
-            i_NewVehicle.SetSpecificDetails(carColor, carNumberOfDoors);
-        }
+        //    i_NewVehicle.SetSpecificDetails(carColor, carNumberOfDoors);
+        //}
 
-        private void setTruckDetails(Vehicle i_NewVehicle)
-        {
-            float maxCarryingWeight = getTruckMaxCarryingWeight();
-            bool isCarryingHazardousMaterials = getIfTruckIsCarryingHazardousMaterials();
+        //private void setTruckDetails(Vehicle i_NewVehicle)
+        //{
+        //    float maxCarryingWeight = getTruckMaxCarryingWeight();
+        //    bool isCarryingHazardousMaterials = getIfTruckIsCarryingHazardousMaterials();
 
-            i_NewVehicle.SetSpecificDetails(maxCarryingWeight, isCarryingHazardousMaterials);
-        }
+        //    i_NewVehicle.SetSpecificDetails(maxCarryingWeight, isCarryingHazardousMaterials);
+        //}
 
-        private void setMotorcycleDetails(Vehicle i_NewVehicle)
-        {
-            int engineDisplacement = getMotorcycleEngineDisplacement();
-            Motorcycle.eLicenseType licenseType = getMotorcycleLicenseType();
+        //private void setMotorcycleDetails(Vehicle i_NewVehicle)
+        //{
+        //    int engineDisplacement = getMotorcycleEngineDisplacement();
+        //    Motorcycle.eLicenseType licenseType = getMotorcycleLicenseType();
 
-            i_NewVehicle.SetSpecificDetails(engineDisplacement, licenseType);
-        }
+        //    i_NewVehicle.SetSpecificDetails(engineDisplacement, licenseType);
+        //}
 
 
         private Vehicle.eVehicleType getVehicleType()
