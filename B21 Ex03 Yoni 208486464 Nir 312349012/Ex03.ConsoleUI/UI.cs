@@ -35,7 +35,7 @@ namespace Ex03.ConsoleUI
 
         public static void PrintStringList(List<string> i_StringList)
         {
-            foreach(string str in i_StringList)
+            foreach (string str in i_StringList)
             {
                 UI.PrintString(str);
             }
@@ -54,7 +54,7 @@ namespace Ex03.ConsoleUI
             string[] menu = Enum.GetNames(typeof(T));
             Array indexes = Enum.GetValues(typeof(T));
             int index = 1, userChoice;
-            foreach(string str in menu)
+            foreach (string str in menu)
             {
                PrintString(string.Format("{0}. {1}", index++, str));
             }
@@ -134,7 +134,6 @@ namespace Ex03.ConsoleUI
                     outputFloat = float.Parse(userInput);
                     isValidFloat = true;
                 }
-
                 catch (FormatException)
                 {
                     PrintInvalidInputMessage();
@@ -148,7 +147,7 @@ namespace Ex03.ConsoleUI
         public static string ReadStringFromUser()
         {
             bool isValidString = false;
-            string userInput = String.Empty;
+            string userInput = string.Empty;
 
             do
             {
@@ -170,7 +169,7 @@ namespace Ex03.ConsoleUI
         public static string ReadStringContainsNumbersOnlyFromUser()
         {
             bool isNumbersString = false;
-            string userInput = String.Empty;
+            string userInput = string.Empty;
 
             do
             {
@@ -193,7 +192,7 @@ namespace Ex03.ConsoleUI
         public static string ReadYesOrNoFromUser()
         {
             bool isYesOrNoString = false, isFirstRun = true; ;
-            string userInput = String.Empty, yes = "yes", no = "no";
+            string userInput = string.Empty, yes = "yes", no = "no";
 
             do
             {

@@ -114,6 +114,5 @@ namespace Ex03.GarageLogic
 
 			return wheelsDetails.ToString();
 		}
-
 	}
 }

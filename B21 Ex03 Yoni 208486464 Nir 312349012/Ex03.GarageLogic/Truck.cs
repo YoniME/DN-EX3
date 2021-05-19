@@ -77,7 +77,6 @@ namespace Ex03.GarageLogic
 Otherwise enter 'false':", GetType().GetMethod("SetIsCarryingHazardousMaterials"));
 
             return specificParametersForCar;
-
         }
 
         public void SetMaxCarryingWeight(string i_UserInput)

@@ -20,7 +20,6 @@ namespace Ex03.GarageLogic
         private int m_EngineDisplacement;
         private eLicenseType m_LicenseType;
         
-
         public enum eLicenseType
         {
             A = 1,

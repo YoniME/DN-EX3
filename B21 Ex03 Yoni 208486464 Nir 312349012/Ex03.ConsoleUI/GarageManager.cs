@@ -55,7 +55,6 @@ namespace Ex03.ConsoleUI
                     case UI.eGarageActions.Quit:
                         userWantsToQuit = true;
                         break;
-
                 }
             } 
             while (!userWantsToQuit);
@@ -83,23 +82,21 @@ namespace Ex03.ConsoleUI
                 newVehicle = setNewVehicle(licenseNumber, ref vehicleType);
                 string ownerName = getOwnerName();
                 string ownerPhoneNumber = getOwnerPhoneNumber();
-                //setSpecificDetailsForVehicle(newVehicle, vehicleType);
                 setSpecificVehicleParameters(newVehicle);
                 r_Garage.InsertNewVehicleToGarage(newVehicle, ownerName, ownerPhoneNumber);
-                
             }
         }
 
         private void displayVehiclesInGarage()
         {
             string stringToPrint;
-            int userChoice = -1;
+            int userChoice = -1, allVehicles = 1;
             List<string> vehiclesToDisplay = null;
 
             stringToPrint = "Press 0 to display vehicles sorted according to status, and 1 to display all vehicles in the garage: ";
             UI.PrintString(stringToPrint.ToString());
             userChoice = UI.ReadIntFromUser();
-            if (userChoice == 1)
+            if (userChoice == allVehicles)
             {
                 vehiclesToDisplay = r_Garage.DisplayAllVehiclesInGarage(null);
             }
@@ -152,7 +149,7 @@ namespace Ex03.ConsoleUI
             {
                 r_Garage.InflateTheWheels(licenseNumber, airToAdd);
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 UI.PrintString(exception.Message);
             }
@@ -196,6 +193,7 @@ namespace Ex03.ConsoleUI
             stringToPrint = "Please enter the vehicle number";
             UI.PrintString(stringToPrint.ToString());
             licenseNumber = UI.ReadStringFromUser();
+
             stringToPrint = "Please enter the amount of battery you want to add";
             UI.PrintString(stringToPrint.ToString());
             batteryToAdd = UI.ReadFloatFromUser();
@@ -440,74 +438,74 @@ namespace Ex03.ConsoleUI
             return ownerPhoneNumber;
         }
 
-        private Car.eCarColor getCarColor()
-        {
-            Car.eCarColor userChoice = new Car.eCarColor();
-            string stringToPrint = "Please choose color:";
+        //private Car.eCarColor getCarColor()
+        //{
+        //    Car.eCarColor userChoice = new Car.eCarColor();
+        //    string stringToPrint = "Please choose color:";
 
-            UI.PrintString(stringToPrint);
-            userChoice = (Car.eCarColor)UI.GetInputAccordingToEnum(userChoice);
+        //    UI.PrintString(stringToPrint);
+        //    userChoice = (Car.eCarColor)UI.GetInputAccordingToEnum(userChoice);
 
-            return userChoice;
-        }
+        //    return userChoice;
+        //}
 
-        private Car.eNumberOfDoors getCarNumberOfDoors()
-        {
-            Car.eNumberOfDoors userChoice = new Car.eNumberOfDoors();
-            string stringToPrint = "Please choose number of doors:";
+        //private Car.eNumberOfDoors getCarNumberOfDoors()
+        //{
+        //    Car.eNumberOfDoors userChoice = new Car.eNumberOfDoors();
+        //    string stringToPrint = "Please choose number of doors:";
 
-            UI.PrintString(stringToPrint);
-            userChoice = (Car.eNumberOfDoors)UI.GetInputAccordingToEnum(userChoice);
+        //    UI.PrintString(stringToPrint);
+        //    userChoice = (Car.eNumberOfDoors)UI.GetInputAccordingToEnum(userChoice);
 
-            return userChoice;
-        }
+        //    return userChoice;
+        //}
 
 
-        private int getMotorcycleEngineDisplacement()
-        {
-            int userChoice;
-            string stringToPrint = "Please choose the engine displacement:";
+        //private int getMotorcycleEngineDisplacement()
+        //{
+        //    int userChoice;
+        //    string stringToPrint = "Please choose the engine displacement:";
 
-            UI.PrintString(stringToPrint);
-            userChoice = UI.ReadIntFromUser();
+        //    UI.PrintString(stringToPrint);
+        //    userChoice = UI.ReadIntFromUser();
 
-            return userChoice;
-        }
+        //    return userChoice;
+        //}
 
-        private Motorcycle.eLicenseType getMotorcycleLicenseType()
-        {
-            Motorcycle.eLicenseType userChoice = new Motorcycle.eLicenseType();
-            string stringToPrint = "Please choose the lisence type:";
+        //private Motorcycle.eLicenseType getMotorcycleLicenseType()
+        //{
+        //    Motorcycle.eLicenseType userChoice = new Motorcycle.eLicenseType();
+        //    string stringToPrint = "Please choose the lisence type:";
 
-            UI.PrintString(stringToPrint);
-            userChoice = (Motorcycle.eLicenseType)UI.GetInputAccordingToEnum(userChoice);
+        //    UI.PrintString(stringToPrint);
+        //    userChoice = (Motorcycle.eLicenseType)UI.GetInputAccordingToEnum(userChoice);
 
-            return userChoice;
-        }
+        //    return userChoice;
+        //}
 
-        private float getTruckMaxCarryingWeight()
-        {
-            float userChoice;
-            string stringToPrint = "Please choose the max carrying weight:";
+        //private float getTruckMaxCarryingWeight()
+        //{
+        //    float userChoice;
+        //    string stringToPrint = "Please choose the max carrying weight:";
 
-            UI.PrintString(stringToPrint);
-            userChoice = UI.ReadFloatFromUser();
+        //    UI.PrintString(stringToPrint);
+        //    userChoice = UI.ReadFloatFromUser();
 
-            return userChoice;
-        }
+        //    return userChoice;
+        //}
 
-        private bool getIfTruckIsCarryingHazardousMaterials()
-        {
-            bool isCarryingHazardousMaterials;
-            string stringToPrint = "Does the truck can carry hazardous materials? yes/no";
-            string userChoice, yes = "yes";
+        //private bool getIfTruckIsCarryingHazardousMaterials()
+        //{
+        //    bool isCarryingHazardousMaterials;
+        //    string stringToPrint = "Does the truck can carry hazardous materials? yes/no";
+        //    string userChoice, yes = "yes";
 
-            UI.PrintString(stringToPrint);
-            userChoice = UI.ReadYesOrNoFromUser();
-            isCarryingHazardousMaterials = userChoice.Equals(yes);
+        //    UI.PrintString(stringToPrint);
+        //    userChoice = UI.ReadYesOrNoFromUser();
+        //    isCarryingHazardousMaterials = userChoice.Equals(yes);
 
-            return isCarryingHazardousMaterials;
-        }
+        //    return isCarryingHazardousMaterials;
+        //}
 
         private string getLicenseNumber()
         {

@@ -28,11 +28,6 @@ namespace Ex03.GarageLogic
             return vehicleInGarage;
         }
 
-        public VehicleFolder.eVehicleStatus GetVehicleStatuses()
-        {
-            return new VehicleFolder.eVehicleStatus();
-        }
-
         public void InsertNewVehicleToGarage(Vehicle i_NewVehicleInGarage, string i_VehicleOwnerName, string i_VehicleownerPhoneNumber)
         {
             VehicleFolder newVehicleFolder = new VehicleFolder(i_NewVehicleInGarage, i_VehicleOwnerName, i_VehicleownerPhoneNumber);
@@ -82,7 +77,6 @@ namespace Ex03.GarageLogic
             
             checkIfVehicleInGarage(i_LicenseNumber);
             checkIfFillEnergyActionSuitableToEnergySource(i_LicenseNumber, energyType);
-
             (r_Vehicles[i_LicenseNumber].Vehicle.EnergySource as FuelTank).Refuel(i_AmountToAdd, i_FuelType);
         }
 
@@ -92,7 +86,6 @@ namespace Ex03.GarageLogic
 
             checkIfVehicleInGarage(i_LicenseNumber);
             checkIfFillEnergyActionSuitableToEnergySource(i_LicenseNumber, energyType);
-
             (r_Vehicles[i_LicenseNumber].Vehicle.EnergySource as ElectricBattery).Charge(i_AmountToAdd);
         }
 
@@ -119,7 +112,6 @@ namespace Ex03.GarageLogic
             bool isSuitableAction, isFuelVehicle;
 
             isFuelVehicle = r_Vehicles[i_LicenseNumber].Vehicle.EnergySource is FuelTank;
-
             if (i_TypeOfRequest == EnergySource.eEnergySourceType.Fuel)
             {
                 isSuitableAction = isFuelVehicle;
