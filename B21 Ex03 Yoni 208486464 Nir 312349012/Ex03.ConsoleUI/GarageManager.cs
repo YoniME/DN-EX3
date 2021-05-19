@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ex03.GarageLogic;
-
 using System.Reflection;
 
 
@@ -68,10 +67,16 @@ namespace Ex03.ConsoleUI
             bool isAlreadyInGarage = r_Garage.IsVehicleInGarage(licenseNumber);
             Vehicle newVehicle;
             Vehicle.eVehicleType vehicleType = new Vehicle.eVehicleType();
-            
+            VehicleFolder.eVehicleStatus newStatus = VehicleFolder.eVehicleStatus.InHandling;
+
+
             if (isAlreadyInGarage)
             {
-                r_Garage.ChangeTheStatusOfCar(licenseNumber, VehicleFolder.eVehicleStatus.InHandling);
+                StringBuilder vehicleInGarage = new StringBuilder();
+
+                r_Garage.ChangeTheStatusOfCar(licenseNumber, newStatus);
+                vehicleInGarage.AppendFormat("The vehicle already in the garage. Its Status changed to: {0}", newStatus.ToString());
+                UI.PrintString(vehicleInGarage.ToString());
             }
             else
             {
