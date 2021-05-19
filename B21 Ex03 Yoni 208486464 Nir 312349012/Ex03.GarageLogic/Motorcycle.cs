@@ -51,7 +51,8 @@ namespace Ex03.GarageLogic
             motorcycleDetails.AppendFormat("{0}", base.GetDetails());
             motorcycleDetails.AppendFormat("License type: {0}{1}", m_LicenseType.ToString(), Environment.NewLine);
             motorcycleDetails.AppendFormat("Engine displacement: {0}{1}",m_EngineDisplacement.ToString(), Environment.NewLine);
-            motorcycleDetails.AppendFormat("{0}", EnergySource.GetEnergySourceDetails());
+            motorcycleDetails.AppendFormat("{0}{1}", EnergySource.GetEnergySourceDetails());
+            motorcycleDetails.AppendFormat("{0}", GetWheelsDetails());
 
             return motorcycleDetails.ToString();
         }
@@ -121,8 +122,5 @@ namespace Ex03.GarageLogic
                 m_LicenseType = (eLicenseType)actionNumber;
             }
         }
-
-
-
     }
 }

@@ -55,5 +55,16 @@ namespace Ex03.GarageLogic
             
             m_AirPressure += i_AirPressureToAdd;
         }
+
+        public string GetDetails()
+        {
+            StringBuilder wheelDetails = new StringBuilder();
+
+            wheelDetails.AppendFormat("Wheel manufacture name: {0}{1}", m_ManufacturName, Environment.NewLine);
+            wheelDetails.AppendFormat("Max air pressure: {0}{1}", r_MaxAirPressure.ToString(), Environment.NewLine);
+            wheelDetails.AppendFormat("Current air pressure: {0}{1}", m_AirPressure.ToString(), Environment.NewLine);
+
+            return wheelDetails.ToString();
+        }
     }
 }

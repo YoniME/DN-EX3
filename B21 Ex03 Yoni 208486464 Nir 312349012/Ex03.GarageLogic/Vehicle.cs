@@ -25,12 +25,12 @@ namespace Ex03.GarageLogic
 		
 		protected Vehicle(string i_Manufacturer, string i_PlateLicenseNumber,float i_RemainingEnergyPrecentage,
 			int i_NumberOfWheels, float i_MaxAirPressure, EnergySource.eEnergySourceType i_EnergyType,
-			string i_WheelsManufacturName, float i_CurrentWheelsAirPressure)
+			string i_WheelsManufacturName, float i_WheelsCurrentAirPressurePrecentage)
         {
 			m_ManufacturName = i_Manufacturer;
 			m_PlateLicenseNumber = i_PlateLicenseNumber;
 			m_Wheels = new List<Wheel>(i_NumberOfWheels);
-			setWheels(i_WheelsManufacturName, i_CurrentWheelsAirPressure, i_MaxAirPressure, i_NumberOfWheels);
+			setWheels(i_WheelsManufacturName, i_WheelsCurrentAirPressurePrecentage, i_MaxAirPressure, i_NumberOfWheels);
 			if (i_EnergyType == EnergySource.eEnergySourceType.Fuel)
             {
 				m_EnergySource = new FuelTank();
@@ -81,14 +81,15 @@ namespace Ex03.GarageLogic
 			return vehicleDetails.ToString();
         }
 
-		private void setWheels(string i_WheelManufacturName, float i_CurrentWheelsAirPressure,
+		private void setWheels(string i_WheelManufacturName, float i_WheelsCurrentAirPressurePrecentage,
 			float i_MaxAirPressure, int i_NumberOfWheels)
         {
 			Wheel newWheel;
+			float currentAirPressure = i_MaxAirPressure * i_WheelsCurrentAirPressurePrecentage / 100;
 
 			for (int i = 0; i < i_NumberOfWheels; i++)
 			{
-				newWheel = new Wheel(i_WheelManufacturName, i_CurrentWheelsAirPressure, i_MaxAirPressure);
+				newWheel = new Wheel(i_WheelManufacturName, currentAirPressure, i_MaxAirPressure);
 				Wheels.Add(newWheel);
 			}
 		}
@@ -98,6 +99,21 @@ namespace Ex03.GarageLogic
 		public abstract void SetSpecificDetails(params object[] i_Details);
 
 		public abstract Dictionary<string, MethodInfo> GetSpecificParameters();
+
+		public string GetWheelsDetails()
+        {
+			int numberOfWheels = Wheels.Count, index = 1 ;
+			StringBuilder wheelsDetails = new StringBuilder();
+
+			wheelsDetails.AppendFormat("Number of wheels: {0}{1}", numberOfWheels.ToString(), Environment.NewLine);
+			foreach (Wheel wheel in m_Wheels)
+			{ 
+				wheelsDetails.AppendFormat("{0}. {1}{2}", index.ToString(),wheel.GetDetails() , Environment.NewLine);
+				index++;
+			}
+
+			return wheelsDetails.ToString();
+		}
 
 	}
 }

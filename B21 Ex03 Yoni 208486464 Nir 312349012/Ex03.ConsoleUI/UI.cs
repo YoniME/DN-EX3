@@ -72,6 +72,11 @@ namespace Ex03.ConsoleUI
             {
                 try
                 {
+                    if (!isFirstRound)
+                    {
+                        PrintInvalidInputMessage();
+                    }
+                    isFirstRound = false;
                     actionNumber = ReadIntFromUser();
                     isValidAction = Enum.IsDefined(typeof(T), actionNumber);
                 }

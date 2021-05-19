@@ -55,7 +55,8 @@ namespace Ex03.GarageLogic
             truckDetails.AppendFormat("{0}", base.GetDetails());
             truckDetails.AppendFormat("Is carrying hazardous materials: {0}{1}", m_IsCarryingHazardousMaterials.ToString(), Environment.NewLine);
             truckDetails.AppendFormat("Max carrying weight: {0}{1}", m_MaxCarryingWeight.ToString(), Environment.NewLine);
-            truckDetails.AppendFormat("{0}", EnergySource.GetEnergySourceDetails());
+            truckDetails.AppendFormat("{0}{1}", EnergySource.GetEnergySourceDetails(), Environment.NewLine);
+            truckDetails.AppendFormat("{0}", GetWheelsDetails());
 
             return truckDetails.ToString();
         }

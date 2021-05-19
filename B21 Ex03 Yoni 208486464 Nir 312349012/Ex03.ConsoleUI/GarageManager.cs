@@ -112,16 +112,23 @@ namespace Ex03.ConsoleUI
 
         private void changeTheStatusOfCar()
         {
-            StringBuilder stringToPrint = new StringBuilder();
+            string stringToPrint;
             int userChoice;
             string carLicensePlate;
             VehicleFolder.eVehicleStatus statusesInGarage = new VehicleFolder.eVehicleStatus();
 
-            stringToPrint.Append(@"Please enter the car number");
-            UI.PrintString(stringToPrint.ToString());
+            stringToPrint = "Please enter the car number";
+            UI.PrintString(stringToPrint);
             carLicensePlate = UI.ReadStringFromUser();
             userChoice = UI.GetInputAccordingToEnum(statusesInGarage);
-            r_Garage.ChangeTheStatusOfCar(carLicensePlate, (VehicleFolder.eVehicleStatus)userChoice);
+            try
+            {
+                r_Garage.ChangeTheStatusOfCar(carLicensePlate, (VehicleFolder.eVehicleStatus)userChoice);
+            }
+            catch (ArgumentException exception)
+            {
+                UI.PrintString(exception.Message); 
+            }
         }
 
         private void inflateTheWheels()
@@ -140,9 +147,9 @@ namespace Ex03.ConsoleUI
             {
                 r_Garage.InflateTheWheels(carLicensePlate, airToAdd);
             }
-            catch(Exception ex)
+            catch(Exception exception)
             {
-                UI.PrintString(ex.Message);
+                UI.PrintString(exception.Message);
             }
         }
 
@@ -169,9 +176,9 @@ namespace Ex03.ConsoleUI
             {
                 r_Garage.Refuel(carLicensePlate, amountOfFuelToAdd, fuelType);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                UI.PrintString(ex.Message);
+                UI.PrintString(exception.Message);
             }
         }
 
@@ -191,9 +198,9 @@ namespace Ex03.ConsoleUI
             {
                 r_Garage.ChargeTheBattery(carLicensePlate, batteryToAdd);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                UI.PrintString(ex.Message);
+                UI.PrintString(exception.Message);
             }
         }
 
@@ -210,9 +217,9 @@ namespace Ex03.ConsoleUI
                 vehicleFullDetails = r_Garage.DisplayFullDetailsOfVehicle(carLicensePlate);
                 UI.PrintString(vehicleFullDetails);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                UI.PrintString(ex.Message);
+                UI.PrintString(exception.Message);
             }
            
         }
@@ -276,7 +283,7 @@ namespace Ex03.ConsoleUI
                         isSetsucceeded = true;
                     }
                     catch
-                    { 
+                    {
                         UI.PrintInvalidInputMessage();
                         isSetsucceeded = false;
                     }
@@ -388,13 +395,24 @@ namespace Ex03.ConsoleUI
 
         private float getWheelsCurrentAirPressure()
         {
-            string stringToPrint = "Please enter the current wheels air pressure:";
-            float wheelsCurrentAirPressure;
+            string stringToPrint = "Please enter the precentage amount of current air pressure (0-100 %):";
+            bool isValidPrecent = false, isFirstRun = true; ;
+            float wheelsCurrentAirPressurePrecentage, precentMinRange = 0, precentMaxRange = 100;
 
-            UI.PrintString(stringToPrint);
-            wheelsCurrentAirPressure = UI.ReadFloatFromUser();
+            do
+            {
+                if (!isFirstRun)
+                {
+                    UI.PrintInvalidInputMessage();
+                }
+                isFirstRun = false;
+                UI.PrintString(stringToPrint);
+                wheelsCurrentAirPressurePrecentage = UI.ReadFloatFromUser();
+                isValidPrecent = isNumberInRange(wheelsCurrentAirPressurePrecentage, precentMinRange, precentMaxRange);
+            }
+            while (!isValidPrecent);
 
-            return wheelsCurrentAirPressure;
+            return wheelsCurrentAirPressurePrecentage;
         }
 
         private string getOwnerName()
