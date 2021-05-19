@@ -43,6 +43,7 @@ namespace Ex03.GarageLogic
         {
             bool isAirPressureToAddIsNegative = i_AirPressureToAdd < 0;
             bool isAboveMaxAirPressure = m_AirPressure + i_AirPressureToAdd > r_MaxAirPressure;
+            float currentMaxAmountOfAirToAdd = r_MaxAirPressure - m_AirPressure;
 
             if (isAirPressureToAddIsNegative)
             {
@@ -50,7 +51,7 @@ namespace Ex03.GarageLogic
             }
             else if (isAboveMaxAirPressure)
             {
-                throw new ValueOutOfRangeException(0, r_MaxAirPressure);
+                throw new ValueOutOfRangeException(0, currentMaxAmountOfAirToAdd);
             }
             
             m_AirPressure += i_AirPressureToAdd;

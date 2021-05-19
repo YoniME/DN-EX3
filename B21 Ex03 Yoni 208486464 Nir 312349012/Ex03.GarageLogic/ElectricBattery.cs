@@ -22,6 +22,7 @@ namespace Ex03.GarageLogic
         public void Charge(float i_AmountOfEnergyToAdd)
         {
             bool isBatteryFlooded = RemainingEnergy + i_AmountOfEnergyToAdd > MaxEnergySourceCapacity;
+            float currentMaxAmountOfEnergyToAdd = MaxEnergySourceCapacity - RemainingEnergy;
 
             try
             {
@@ -34,7 +35,7 @@ namespace Ex03.GarageLogic
 
             if (isBatteryFlooded)
             {
-                throw new ValueOutOfRangeException(0, MaxEnergySourceCapacity);
+                throw new ValueOutOfRangeException(0, currentMaxAmountOfEnergyToAdd);
             }
 
             RemainingEnergy += i_AmountOfEnergyToAdd;

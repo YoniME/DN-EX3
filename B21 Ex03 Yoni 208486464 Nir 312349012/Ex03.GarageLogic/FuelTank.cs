@@ -39,6 +39,7 @@ namespace Ex03.GarageLogic
         public void Refuel(float i_AmountOfFuelToAdd, eFuelType i_FuelType)
         {
             bool isEngineFlooded = RemainingEnergy + i_AmountOfFuelToAdd > MaxEnergySourceCapacity;
+            float currentMaxAmountOfFuelToAdd = MaxEnergySourceCapacity - RemainingEnergy;
 
             try
             {
@@ -52,7 +53,7 @@ namespace Ex03.GarageLogic
 
             if(isEngineFlooded)
             {
-                throw new ValueOutOfRangeException(0, MaxEnergySourceCapacity);
+                throw new ValueOutOfRangeException(0, currentMaxAmountOfFuelToAdd);
             }
 
             RemainingEnergy += i_AmountOfFuelToAdd;
