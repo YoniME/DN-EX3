@@ -103,7 +103,6 @@ namespace Ex03.ConsoleUI
             else
             {
                 VehicleFolder.eVehicleStatus statusesInGarage = new VehicleFolder.eVehicleStatus();
-                //VehicleFolder.eVehicleStatus statusesInGarage = r_Garage.GetVehicleStatuses();
                 userChoice = UI.GetInputAccordingToEnum(statusesInGarage);
                 VehicleFolder.eVehicleStatus statusFilter = (VehicleFolder.eVehicleStatus)userChoice;
                 vehiclesToDisplay = r_Garage.DisplayAllVehiclesInGarage(statusFilter);
@@ -247,27 +246,6 @@ namespace Ex03.ConsoleUI
             return newVehicle;
         }
 
-        //private void setSpecificDetailsForVehicle(Vehicle i_NewVehicle, Vehicle.eVehicleType i_TypeOfVehicle)
-        //{
-        //    switch(i_TypeOfVehicle)
-        //    {
-        //        case Vehicle.eVehicleType.Car:
-        //            //setCarDetails(i_NewVehicle);
-        //            setSpecificVehicleParameters(i_NewVehicle);
-        //            break;
-
-        //        case Vehicle.eVehicleType.MotorCycle:
-        //            //setMotorcycleDetails(i_NewVehicle);
-        //            setSpecificVehicleParameters(i_NewVehicle);
-        //            break;
-
-        //        case Vehicle.eVehicleType.Truck:
-        //            //setTruckDetails(i_NewVehicle);
-        //            setSpecificVehicleParameters(i_NewVehicle);
-        //            break;
-        //    }
-        //}
-
         private void setSpecificVehicleParameters(Vehicle i_NewVehicle)
         {
             string userInput, finalStateToPrint = "Vehicle entered the garage successfully";
@@ -297,31 +275,6 @@ namespace Ex03.ConsoleUI
             UI.ClearScreen();
             UI.PrintString(finalStateToPrint);
         }
-
-        //private void setCarDetails(Vehicle i_NewVehicle)
-        //{
-        //    Car.eCarColor carColor = getCarColor();
-        //    Car.eNumberOfDoors carNumberOfDoors = getCarNumberOfDoors();
-
-        //    i_NewVehicle.SetSpecificDetails(carColor, carNumberOfDoors);
-        //}
-
-        //private void setTruckDetails(Vehicle i_NewVehicle)
-        //{
-        //    float maxCarryingWeight = getTruckMaxCarryingWeight();
-        //    bool isCarryingHazardousMaterials = getIfTruckIsCarryingHazardousMaterials();
-
-        //    i_NewVehicle.SetSpecificDetails(maxCarryingWeight, isCarryingHazardousMaterials);
-        //}
-
-        //private void setMotorcycleDetails(Vehicle i_NewVehicle)
-        //{
-        //    int engineDisplacement = getMotorcycleEngineDisplacement();
-        //    Motorcycle.eLicenseType licenseType = getMotorcycleLicenseType();
-
-        //    i_NewVehicle.SetSpecificDetails(engineDisplacement, licenseType);
-        //}
-
 
         private Vehicle.eVehicleType getVehicleType()
         {
@@ -437,75 +390,6 @@ namespace Ex03.ConsoleUI
 
             return ownerPhoneNumber;
         }
-
-        //private Car.eCarColor getCarColor()
-        //{
-        //    Car.eCarColor userChoice = new Car.eCarColor();
-        //    string stringToPrint = "Please choose color:";
-
-        //    UI.PrintString(stringToPrint);
-        //    userChoice = (Car.eCarColor)UI.GetInputAccordingToEnum(userChoice);
-
-        //    return userChoice;
-        //}
-
-        //private Car.eNumberOfDoors getCarNumberOfDoors()
-        //{
-        //    Car.eNumberOfDoors userChoice = new Car.eNumberOfDoors();
-        //    string stringToPrint = "Please choose number of doors:";
-
-        //    UI.PrintString(stringToPrint);
-        //    userChoice = (Car.eNumberOfDoors)UI.GetInputAccordingToEnum(userChoice);
-
-        //    return userChoice;
-        //}
-
-
-        //private int getMotorcycleEngineDisplacement()
-        //{
-        //    int userChoice;
-        //    string stringToPrint = "Please choose the engine displacement:";
-
-        //    UI.PrintString(stringToPrint);
-        //    userChoice = UI.ReadIntFromUser();
-
-        //    return userChoice;
-        //}
-
-        //private Motorcycle.eLicenseType getMotorcycleLicenseType()
-        //{
-        //    Motorcycle.eLicenseType userChoice = new Motorcycle.eLicenseType();
-        //    string stringToPrint = "Please choose the lisence type:";
-
-        //    UI.PrintString(stringToPrint);
-        //    userChoice = (Motorcycle.eLicenseType)UI.GetInputAccordingToEnum(userChoice);
-
-        //    return userChoice;
-        //}
-
-        //private float getTruckMaxCarryingWeight()
-        //{
-        //    float userChoice;
-        //    string stringToPrint = "Please choose the max carrying weight:";
-
-        //    UI.PrintString(stringToPrint);
-        //    userChoice = UI.ReadFloatFromUser();
-
-        //    return userChoice;
-        //}
-
-        //private bool getIfTruckIsCarryingHazardousMaterials()
-        //{
-        //    bool isCarryingHazardousMaterials;
-        //    string stringToPrint = "Does the truck can carry hazardous materials? yes/no";
-        //    string userChoice, yes = "yes";
-
-        //    UI.PrintString(stringToPrint);
-        //    userChoice = UI.ReadYesOrNoFromUser();
-        //    isCarryingHazardousMaterials = userChoice.Equals(yes);
-
-        //    return isCarryingHazardousMaterials;
-        //}
 
         private string getLicenseNumber()
         {

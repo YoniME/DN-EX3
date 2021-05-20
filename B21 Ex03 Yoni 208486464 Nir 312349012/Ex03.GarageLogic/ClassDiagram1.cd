@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Ex03.GarageLogic.Vehicle">
-    <Position X="11.25" Y="0.5" Width="2" />
+    <Position X="11.25" Y="0.5" Width="2.25" />
     <Members>
       <Property Name="EnergySource" Hidden="true" />
       <Property Name="ManufacturName" Hidden="true" />
@@ -14,7 +14,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="Ex03.GarageLogic.Vehicle.eVehicleType" Collapsed="true">
+      <Enum Name="Ex03.GarageLogic.Vehicle.eVehicleType">
         <TypeIdentifier>
           <NewMemberFileName>Vehicle.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -26,7 +26,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Car">
-    <Position X="14" Y="6.25" Width="2.25" />
+    <Position X="14.25" Y="6.5" Width="2.25" />
     <Members>
       <Property Name="Color" Hidden="true" />
       <Property Name="NumberOfDoors" Hidden="true" />
@@ -35,12 +35,12 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="Ex03.GarageLogic.Car.eCarColor" Collapsed="true">
+      <Enum Name="Ex03.GarageLogic.Car.eCarColor">
         <TypeIdentifier>
           <NewMemberFileName>Car.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
-      <Enum Name="Ex03.GarageLogic.Car.eNumberOfDoors" Collapsed="true">
+      <Enum Name="Ex03.GarageLogic.Car.eNumberOfDoors">
         <TypeIdentifier>
           <NewMemberFileName>Car.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -52,7 +52,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Truck">
-    <Position X="11" Y="6.25" Width="2.5" />
+    <Position X="11" Y="6.5" Width="2.5" />
     <Members>
       <Property Name="IsCarryingHazardousMaterials" Hidden="true" />
       <Property Name="MaxCarryingWeight" Hidden="true" />
@@ -63,12 +63,12 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Motorcycle">
-    <Position X="7.75" Y="6.25" Width="2.25" />
+    <Position X="7.75" Y="6.5" Width="2.25" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="Ex03.GarageLogic.Motorcycle.eLicenseType" Collapsed="true">
+      <Enum Name="Ex03.GarageLogic.Motorcycle.eLicenseType">
         <TypeIdentifier>
           <NewMemberFileName>Motorcycle.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -80,7 +80,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Garage">
-    <Position X="7" Y="0.5" Width="3.25" />
+    <Position X="4" Y="0.5" Width="3.25" />
     <Members>
       <Property Name="Vehicles" Hidden="true" />
     </Members>
@@ -90,7 +90,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.EnergySource">
-    <Position X="18.25" Y="0.5" Width="2.5" />
+    <Position X="18.25" Y="2.25" Width="2.5" />
     <Members>
       <Property Name="MaxEnergySourceCapacity" Hidden="true" />
       <Property Name="RemainingEnergy" Hidden="true" />
@@ -99,7 +99,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="Ex03.GarageLogic.EnergySource.eEnergySourceType" Collapsed="true">
+      <Enum Name="Ex03.GarageLogic.EnergySource.eEnergySourceType">
         <TypeIdentifier>
           <NewMemberFileName>EnergySource.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -111,7 +111,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.FuelTank">
-    <Position X="17.25" Y="6.25" Width="2" />
+    <Position X="17.25" Y="6.5" Width="2" />
     <Members>
       <Property Name="FuelType" Hidden="true" />
     </Members>
@@ -119,7 +119,7 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Enum Name="Ex03.GarageLogic.FuelTank.eFuelType" Collapsed="true">
+      <Enum Name="Ex03.GarageLogic.FuelTank.eFuelType">
         <TypeIdentifier>
           <NewMemberFileName>FuelTank.cs</NewMemberFileName>
         </TypeIdentifier>
@@ -131,14 +131,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.ElectricBattery">
-    <Position X="19.75" Y="6.25" Width="2.25" />
+    <Position X="19.75" Y="6.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ElectricBattery.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ex03.GarageLogic.Wheel">
-    <Position X="14.75" Y="0.5" Width="2.25" />
+    <Position X="15" Y="2.25" Width="2.25" />
     <Members>
       <Property Name="AirPressure" Hidden="true" />
       <Property Name="ManufactorNamer" Hidden="true" />
@@ -147,6 +147,47 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIACAAQAEACAAACQAAAAg=</HashCode>
       <FileName>Wheel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.VehicleFolder">
+    <Position X="8" Y="0.5" Width="2.25" />
+    <Members>
+      <Property Name="Name" Hidden="true" />
+      <Property Name="PhoneNumber" Hidden="true" />
+      <Property Name="Status" Hidden="true" />
+      <Property Name="Vehicle" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Ex03.GarageLogic.VehicleFolder.eVehicleStatus">
+        <TypeIdentifier>
+          <NewMemberFileName>VehicleFolder.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEgAAQABAAAAAIQAQABBAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VehicleFolder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.VehicleCreator">
+    <Position X="4.5" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VehicleCreator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.ValueOutOfRangeException">
+    <Position X="4.5" Y="6.75" Width="2.25" />
+    <Members>
+      <Property Name="MaxValue" Hidden="true" />
+      <Property Name="MinValue" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAgAAAAAAAAAAAAIAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ValueOutOfRangeException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
