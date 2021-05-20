@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Ex03.GarageLogic.Vehicle">
+    <Position X="11.25" Y="0.5" Width="2" />
+    <Members>
+      <Property Name="EnergySource" Hidden="true" />
+      <Property Name="ManufacturName" Hidden="true" />
+      <Property Name="PlateLicenseNumber" Hidden="true" />
+      <Property Name="RemainingEnergy" Hidden="true" />
+      <Property Name="Wheels" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Ex03.GarageLogic.Vehicle.eVehicleType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Vehicle.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAEAIAgBAEAAAAAACAAAAAKAAAAQAkQIAAABQAAAAA=</HashCode>
+      <FileName>Vehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.Car">
+    <Position X="14" Y="6.25" Width="2.25" />
+    <Members>
+      <Property Name="Color" Hidden="true" />
+      <Property Name="NumberOfDoors" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Ex03.GarageLogic.Car.eCarColor" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Car.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Ex03.GarageLogic.Car.eNumberOfDoors" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Car.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAMAgAAAAAQAAACAAgAAAAABAEAEQAAAAgQQAAQA=</HashCode>
+      <FileName>Car.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.Truck">
+    <Position X="11" Y="6.25" Width="2.5" />
+    <Members>
+      <Property Name="IsCarryingHazardousMaterials" Hidden="true" />
+      <Property Name="MaxCarryingWeight" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAhAAAAAAAAACAAhAAAAAQAEAEBAAEAASQAAAA=</HashCode>
+      <FileName>Truck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.Motorcycle">
+    <Position X="7.75" Y="6.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Ex03.GarageLogic.Motorcycle.eLicenseType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Motorcycle.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAgAAAAAAAAACAAoCAAAAAAUAEAAAAAAQQAAAA=</HashCode>
+      <FileName>Motorcycle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.Garage">
+    <Position X="7" Y="0.5" Width="3.25" />
+    <Members>
+      <Property Name="Vehicles" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAEAQAgACAAgAAgAQAAAACAAAAAAAAIAAAAEIAAAAE=</HashCode>
+      <FileName>Garage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.EnergySource">
+    <Position X="18.25" Y="0.5" Width="2.5" />
+    <Members>
+      <Property Name="MaxEnergySourceCapacity" Hidden="true" />
+      <Property Name="RemainingEnergy" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Ex03.GarageLogic.EnergySource.eEnergySourceType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>EnergySource.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAREAAAAAAAAgAAAAAAIAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>EnergySource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.FuelTank">
+    <Position X="17.25" Y="6.25" Width="2" />
+    <Members>
+      <Property Name="FuelType" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Ex03.GarageLogic.FuelTank.eFuelType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>FuelTank.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAgAAAAAAAAAAAAAAAAAAoEAAAAAAAAAA=</HashCode>
+      <FileName>FuelTank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.ElectricBattery">
+    <Position X="19.75" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ElectricBattery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ex03.GarageLogic.Wheel">
+    <Position X="14.75" Y="0.5" Width="2.25" />
+    <Members>
+      <Property Name="AirPressure" Hidden="true" />
+      <Property Name="ManufactorNamer" Hidden="true" />
+      <Property Name="MaxAirPressure" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIACAAQAEACAAACQAAAAg=</HashCode>
+      <FileName>Wheel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
